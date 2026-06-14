@@ -7,14 +7,13 @@
 <style>
 .product-hero{padding:120px 20px 60px;background:var(--dark2);border-bottom:3px solid var(--orange);}
 .breadcrumb{font-size:11px;color:var(--gray);margin-bottom:20px;letter-spacing:1px;}
-.breadcrumb a{color:var(--gray);text-decoration:none;}
-.breadcrumb a:hover{color:var(--orange);}
+.breadcrumb a{color:var(--gray);text-decoration:none;}.breadcrumb a:hover{color:var(--orange);}
 .product-main{display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:70px 20px;max-width:1160px;margin:0 auto;align-items:start;}
-.product-gallery{position:sticky;top:84px;}
+.product-gallery{position:sticky;top:84px;display:flex;flex-direction:column;gap:10px;}
 .product-gallery img{width:100%;display:block;border:1px solid rgba(255,255,255,0.08);}
-.product-info .product-category{font-size:10px;font-weight:900;letter-spacing:4px;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
 .product-info h1{font-family:'Oswald',sans-serif;font-size:clamp(30px,4vw,48px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:16px;}
-.product-info .product-catch{font-size:15px;color:rgba(255,255,255,0.85);line-height:1.8;margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,0.1);}
+.product-category{font-size:10px;font-weight:900;letter-spacing:4px;color:var(--orange);text-transform:uppercase;margin-bottom:12px;}
+.product-catch{font-size:15px;color:rgba(255,255,255,0.85);line-height:1.8;margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,0.1);}
 .features-list{display:flex;flex-direction:column;gap:14px;margin-bottom:32px;}
 .feature-row{display:flex;gap:14px;align-items:flex-start;}
 .feat-num{width:28px;height:28px;background:var(--blue);color:#fff;font-size:12px;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
@@ -31,6 +30,26 @@
 .buy-btn{display:block;text-align:center;background:var(--orange);color:#fff;font-size:16px;font-weight:900;letter-spacing:3px;padding:18px;text-decoration:none;text-transform:uppercase;transition:.2s;}
 .buy-btn:hover{background:#c06010;}
 .buy-note{font-size:11px;color:var(--gray);margin-top:12px;text-align:center;}
+.compare-box{background:var(--dark2);border:1px solid rgba(255,255,255,0.08);padding:24px;margin-bottom:28px;}
+.compare-box h3{font-size:11px;font-weight:900;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-bottom:16px;}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.compare-col{padding:16px;border:1px solid rgba(255,255,255,0.08);}
+.compare-col h4{font-size:12px;font-weight:900;color:var(--orange);letter-spacing:2px;margin-bottom:10px;}
+.compare-col ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.compare-col li{font-size:12px;color:var(--gray);line-height:1.6;padding-left:14px;position:relative;}
+.compare-col li::before{content:"▸";position:absolute;left:0;color:var(--blue);}
+.article-section{padding:70px 20px;background:var(--dark);}
+.article-inner{max-width:860px;margin:0 auto;}
+.article-block{margin-bottom:52px;}
+.article-block h3{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:14px;border-left:4px solid var(--orange);padding-left:14px;}
+.article-block p{font-size:14px;color:rgba(255,255,255,0.82);line-height:2;margin-bottom:12px;}
+.article-block p strong{color:var(--orange);}
+.article-block .highlight{background:rgba(34,34,204,0.12);border:1px solid rgba(34,34,204,0.3);padding:18px 20px;border-radius:2px;margin:16px 0;}
+.article-block .highlight p{margin:0;font-size:14px;color:rgba(255,255,255,0.9);line-height:1.9;}
+.made-in-japan{background:rgba(34,34,204,0.1);border:2px solid var(--blue);padding:24px;margin-top:20px;}
+.made-in-japan h4{font-size:13px;font-weight:900;color:#fff;margin-bottom:10px;letter-spacing:2px;}
+.made-in-japan p{font-size:13px;color:rgba(255,255,255,0.82);line-height:1.9;margin:0;}
+.made-in-japan p strong{color:var(--orange);}
 section.related{padding:70px 20px;background:var(--dark2);}
 .related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;margin-top:32px;}
 .rel-card{background:var(--dark);border:1px solid rgba(255,255,255,0.07);overflow:hidden;text-decoration:none;transition:.2s;}
@@ -39,16 +58,14 @@ section.related{padding:70px 20px;background:var(--dark2);}
 .rel-card-body{padding:14px;}
 .rel-card-name{font-size:14px;font-weight:900;color:#fff;margin-bottom:4px;}
 .rel-card-tag{font-size:10px;color:var(--orange);letter-spacing:2px;}
-@media(max-width:768px){.product-main{grid-template-columns:1fr;}.product-gallery{position:static;}}
+@media(max-width:768px){.product-main{grid-template-columns:1fr;}.product-gallery{position:static;}.compare-grid{grid-template-columns:1fr;}}
 </style>
 </head><body>
 <nav>
   <a href="../index.html" class="nav-logo"><img src="../images/logo.png" alt="B-STYLE"><span>B-STYLE</span></a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="../index.html#products">製品一覧</a></li>
-    <li><a href="../index.html#about">ブランド</a></li>
-    <li><a href="../index.html#bcup">B-CUP</a></li>
-    <li><a href="../index.html#contact">お問い合わせ</a></li>
+    <li><a href="../index.html#products">製品一覧</a></li><li><a href="../index.html#about">ブランド</a></li>
+    <li><a href="../index.html#bcup">B-CUP</a></li><li><a href="../index.html#contact">お問い合わせ</a></li>
   </ul>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
@@ -56,26 +73,50 @@ section.related{padding:70px 20px;background:var(--dark2);}
 <div class="product-hero">
   <div class="container">
     <div class="breadcrumb"><a href="../index.html">HOME</a> &gt; <a href="../index.html#products">製品一覧</a> &gt; エアーロッカー</div>
-    <div class="section-label">Air Locker</div>
+    <div class="section-label">Air Locker / Diff Lock</div>
     <h1 class="section-title">エアーロッカー <span class="accent">RD206 / 207 / 208</span></h1>
   </div>
 </div>
 
 <div class="product-main">
   <div class="product-gallery">
-    <img src="../images/img_airlocker.jpg" alt="エアーロッカー" style="margin-bottom:8px;">
+    <img src="../images/img_airlocker.jpg" alt="エアーロッカー">
     <img src="../images/img_airlocker2.jpg" alt="エアーロッカー内部構造">
   </div>
   <div class="product-info">
-    <div class="product-category">Diff Lock / Air Pressure</div>
+    <div class="product-category">Diff Lock / Air Pressure / JA11〜JB74対応</div>
     <h1>空気圧で、デフを<br>完全支配する</h1>
-    <p class="product-catch">コンプレッサーの空気圧でデフを物理的にロック。スイッチ一つで確実なロック・解除が可能。信頼性の高い機械式ロックで、フロント・リアを独立制御できる本格システム。</p>
+    <p class="product-catch">EMロッカーと同じデフロック機能を、空気圧で実現するシステム。動く力が電磁石かエアーかの違いで、ロックの確実性・信頼性は同等。EMロッカーと並ぶB-STYLEの主力デフロックです。</p>
 
     <div class="features-list">
-      <div class="feature-row"><div class="feat-num">①</div><div class="feat-body"><strong>確実な物理ロック</strong><span>空気圧で機械的にデフをロック。電磁式より高い物理信頼性</span></div></div>
-      <div class="feature-row"><div class="feat-num">②</div><div class="feat-body"><strong>スイッチ一つでロック・解除</strong><span>走行中でも必要な場面で瞬時にデフをロックできる</span></div></div>
-      <div class="feature-row"><div class="feat-num">③</div><div class="feat-body"><strong>フロント・リア独立制御</strong><span>前後を個別にコントロール。状況に応じた最適なセッティング</span></div></div>
-      <div class="feature-row"><div class="feat-num">④</div><div class="feat-body"><strong>JA11〜JB74 幅広く対応</strong><span>多世代のジムニーに対応したラインナップ</span></div></div>
+      <div class="feature-row"><div class="feat-num">①</div><div class="feat-body"><strong>空気圧による確実な物理ロック</strong><span>コンプレッサーの圧力でデフを機械的にロック。スイッチ一つで瞬時にロック・解除</span></div></div>
+      <div class="feature-row"><div class="feat-num">②</div><div class="feat-body"><strong>パッキン消耗ゼロの新構造</strong><span>従来品は走行しているだけでロックのON/OFFに関わらずパッキンが消耗していた。B-STYLEのエアーロッカーはこの問題を解決済み</span></div></div>
+      <div class="feature-row"><div class="feat-num">③</div><div class="feat-body"><strong>国内加工・検品済みで発送</strong><span>輸入品のままでは出せないレスポンス・確実なロック・耐久性を実現するため、国内で加工してから出荷</span></div></div>
+      <div class="feature-row"><div class="feat-num">④</div><div class="feat-body"><strong>フロント・リア独立制御</strong><span>前後を個別にコントロール。JA11〜JB74まで幅広く対応</span></div></div>
+    </div>
+
+    <div class="compare-box">
+      <h3>EMロッカーとの違い</h3>
+      <div class="compare-grid">
+        <div class="compare-col">
+          <h4>エアーロッカー</h4>
+          <ul>
+            <li>空気圧（コンプレッサー）でロック</li>
+            <li>コンプレッサー別途必要</li>
+            <li>機械式ロックの安心感</li>
+            <li>配管・バルブ構成</li>
+          </ul>
+        </div>
+        <div class="compare-col">
+          <h4>EMロッカー</h4>
+          <ul>
+            <li>電磁力でロック</li>
+            <li>配線のみでシンプル</li>
+            <li>コンプレッサー不要</li>
+            <li>電気系のみの構成</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <div class="specs-box">
@@ -96,13 +137,44 @@ section.related{padding:70px 20px;background:var(--dark2);}
   </div>
 </div>
 
+<section class="article-section">
+  <div class="article-inner">
+    <div class="section-label">Product Story</div>
+    <h2 class="section-title" style="margin-bottom:8px;">B-STYLEの<br><span class="accent">エアーロッカー</span>とは</h2>
+    <div class="divider"></div>
+
+    <div class="article-block">
+      <h3>EMロッカーと何が違うのか</h3>
+      <p>B-STYLEにはエアーロッカーとEMロッカー、2種類のデフロックがあります。やっていることは同じ——<strong>デフをロックして、左右のタイヤに同じ力を伝える</strong>ことです。</p>
+      <p>違いは動かす力の種類だけ。エアーロッカーはコンプレッサーの空気圧、EMロッカーは電磁力。どちらも確実にデフをロックします。すでにコンプレッサーをお持ちの方や、機械式ロックの感触を好む方にはエアーロッカーが向いています。</p>
+    </div>
+
+    <div class="article-block">
+      <h3>従来のエアーロッカーの弱点を解決</h3>
+      <div class="highlight">
+        <p>従来のエアーロッカーは、走行しているだけでパッキンが消耗していました。<br>ロックをONにしていなくても、走れば減る。これが定番の問題でした。</p>
+      </div>
+      <p>B-STYLEのエアーロッカーはこの構造的な問題を解決しています。<strong>ロックをOFFにしている通常走行中はパッキンに負荷がかからない設計</strong>になっており、消耗を大幅に抑えます。長く使える、メンテナンスサイクルが延びる——実用上の差は大きいです。</p>
+    </div>
+
+    <div class="article-block">
+      <h3>なぜ国内加工してから出荷するのか</h3>
+      <p>EMロッカー・エアーロッカーともに、B-STYLEでは<strong>輸入品をそのまま出荷しません。</strong>必ず国内で加工・検品を行ってから発送しています。</p>
+      <div class="made-in-japan">
+        <h4>国内加工を行う理由</h4>
+        <p>輸入品のままでは、<strong>レスポンスの遅れ・ロックの不確実性・耐久性の低さ</strong>という問題が出ます。これらを解消するための加工を国内で施し、B-STYLEが品質を確認してから出荷しています。そのため納期は約3週間いただきますが、届いた瞬間から安心して使える製品をお届けします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="related">
   <div class="container">
     <div class="section-label">Related Products</div>
     <h2 class="section-title">一緒に使われる<span class="accent">パーツ</span></h2>
     <div class="related-grid">
-      <a href="shaft.html" class="rel-card"><img src="../images/img_shaft.jpg" alt="強化シャフト"><div class="rel-card-body"><div class="rel-card-tag">Driveline</div><div class="rel-card-name">フロント強化シャフト</div></div></a>
       <a href="em-locker.html" class="rel-card"><img src="../images/img_emlocker.jpg" alt="EMロッカー"><div class="rel-card-body"><div class="rel-card-tag">Diff Lock</div><div class="rel-card-name">EMロッカー</div></div></a>
+      <a href="shaft.html" class="rel-card"><img src="../images/img_shaft.jpg" alt="強化シャフト"><div class="rel-card-body"><div class="rel-card-tag">Driveline</div><div class="rel-card-name">フロント強化シャフト</div></div></a>
       <a href="downgear.html" class="rel-card"><img src="../images/img_downgear.jpg" alt="ダウンギア"><div class="rel-card-body"><div class="rel-card-tag">Transfer</div><div class="rel-card-name">エキストラダウンギア</div></div></a>
     </div>
   </div>
@@ -116,6 +188,7 @@ section.related{padding:70px 20px;background:var(--dark2);}
       <li><a href="downgear.html">ダウンギア</a></li><li><a href="2low.html">2Lowシステム</a></li>
       <li><a href="shaft.html">強化シャフト</a></li><li><a href="battleguard.html">バトルガード</a></li>
       <li><a href="frame-cap.html">強化フレームキャップ</a></li><li><a href="tfla60.html">TFLA60</a></li>
+      <li><a href="hard-sil-guard.html">ハードシルガード</a></li>
     </ul></div>
     <div class="footer-links"><h4>サイト</h4><ul>
       <li><a href="../index.html#about">ブランドについて</a></li>
@@ -125,9 +198,5 @@ section.related{padding:70px 20px;background:var(--dark2);}
   </div>
   <div class="footer-bottom"><span>© 2026 B-STYLE.</span><span>TEL 090-9857-7088</span></div>
 </footer>
-<script>
-const ham=document.getElementById('hamburger'),nav=document.getElementById('navLinks');
-ham.addEventListener('click',()=>{nav.classList.toggle('open');});
-nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
-</script>
+<script>const ham=document.getElementById('hamburger'),nav=document.getElementById('navLinks');ham.addEventListener('click',()=>{nav.classList.toggle('open');});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));</script>
 </body></html>
