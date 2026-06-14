@@ -17,7 +17,7 @@
 .tab-panel{display:none;}
 .tab-panel.active{display:block;}
 
-.result-meta{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:28px;align-items:center;}
+.result-meta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:28px;align-items:center;}
 .meta-badge{background:var(--dark2);border:1px solid rgba(255,255,255,0.1);padding:8px 20px;font-size:12px;color:var(--gray);letter-spacing:1px;}
 .meta-badge strong{color:#fff;display:block;font-size:14px;margin-bottom:2px;}
 
@@ -26,27 +26,40 @@
 .pdf-btn svg{width:16px;height:16px;fill:currentColor;}
 
 .result-table-wrap{overflow-x:auto;margin-bottom:32px;}
-table.result{width:100%;border-collapse:collapse;font-size:13px;}
-table.result thead th{background:var(--blue);color:#fff;font-size:10px;font-weight:900;letter-spacing:2px;padding:12px 14px;text-align:center;white-space:nowrap;}
-table.result thead th:first-child{text-align:center;width:60px;}
-table.result thead th.name-col{text-align:left;}
+table.result{width:100%;border-collapse:collapse;font-size:13px;min-width:700px;}
+
+/* ヘッダー */
+table.result thead tr.header-group th{font-size:10px;font-weight:900;letter-spacing:2px;padding:8px 10px;text-align:center;white-space:nowrap;}
+table.result thead tr.header-group th.th-main{background:var(--dark3);color:rgba(255,255,255,0.5);}
+table.result thead tr.header-group th.th-section{background:rgba(34,34,204,0.5);color:rgba(255,255,255,0.7);}
+table.result thead tr.header-labels th{font-size:10px;font-weight:900;letter-spacing:2px;padding:10px 10px;text-align:center;white-space:nowrap;background:var(--blue);color:#fff;}
+table.result thead tr.header-labels th.name-col{text-align:left;}
+
+/* ボディ */
 table.result tbody tr{border-bottom:1px solid rgba(255,255,255,0.06);transition:.15s;}
 table.result tbody tr:hover{background:rgba(34,34,204,0.1);}
-table.result tbody td{padding:12px 14px;color:rgba(255,255,255,0.85);text-align:center;white-space:nowrap;}
-table.result tbody td.name-col{text-align:left;font-weight:700;color:#fff;}
-table.result tbody tr.rank1 td{color:#FFD080;font-weight:900;}
-table.result tbody tr.rank2 td{color:#C0C0C0;font-weight:900;}
-table.result tbody tr.rank3 td{color:#CD7F32;font-weight:900;}
-.rank-num{font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;}
-.rank1 .rank-num{color:#FFD080;}
-.rank2 .rank-num{color:#C0C0C0;}
-.rank3 .rank-num{color:#CD7F32;}
-.penalty-val{font-family:'Oswald',sans-serif;font-size:15px;}
-.ss-time{font-family:'Oswald',sans-serif;font-size:13px;color:var(--orange);}
+table.result tbody td{padding:10px 10px;color:rgba(255,255,255,0.8);text-align:center;white-space:nowrap;font-size:12px;}
+table.result tbody td.name-col{text-align:left;font-weight:700;color:#fff;font-size:13px;}
+table.result tbody td.sec{color:rgba(255,255,255,0.6);}
+table.result tbody td.sec-zero{color:rgba(255,255,255,0.25);}
+
+/* 減点合計列を強調 */
+table.result tbody td.total{font-family:'Oswald',sans-serif;font-size:15px;font-weight:700;color:#fff;background:rgba(34,34,204,0.15);}
+
+/* 上位3位 */
+table.result tbody tr.rank1 td{background:rgba(255,208,128,0.05);}
+table.result tbody tr.rank1 td.name-col{color:#FFD080;}
+table.result tbody tr.rank1 td.total{color:#FFD080;}
+table.result tbody tr.rank2 td.name-col{color:#C0C0C0;}
+table.result tbody tr.rank2 td.total{color:#C0C0C0;}
+table.result tbody tr.rank3 td.name-col{color:#CD7F32;}
+table.result tbody tr.rank3 td.total{color:#CD7F32;}
+
+.rank-num{font-family:'Oswald',sans-serif;font-size:17px;font-weight:700;}
+.ss-time{font-family:'Oswald',sans-serif;font-size:12px;color:var(--orange);}
 
 @media(max-width:600px){
-  .tab-btn{padding:12px 16px;font-size:11px;}
-  table.result thead th,table.result tbody td{padding:10px 8px;font-size:11px;}
+  .tab-btn{padding:12px 14px;font-size:11px;letter-spacing:0;}
 }
 </style>
 </head><body>
@@ -74,12 +87,12 @@ table.result tbody tr.rank3 td{color:#CD7F32;font-weight:900;}
   <div class="container">
 
     <div class="results-tabs">
-      <button class="tab-btn active" onclick="switchTab('open1')">Open 第1戦<br><span style="font-size:9px;font-weight:400;letter-spacing:0;">2025.05.04</span></button>
-      <button class="tab-btn" onclick="switchTab('open2')">Open 第2戦</button>
-      <button class="tab-btn" onclick="switchTab('expert1')">Expert 第1戦</button>
+      <button class="tab-btn active" onclick="switchTab('open1',this)">Open 第1戦<br><span style="font-size:9px;font-weight:400;letter-spacing:0;">2025.05.04</span></button>
+      <button class="tab-btn" onclick="switchTab('open2',this)">Open 第2戦</button>
+      <button class="tab-btn" onclick="switchTab('expert1',this)">Expert 第1戦</button>
     </div>
 
-    <!-- OPEN 第1戦 -->
+    <!-- ===== OPEN 第1戦 ===== -->
     <div id="panel-open1" class="tab-panel active">
       <div class="result-meta">
         <div class="meta-badge"><strong>B-CUP Open 第1戦</strong>2025年5月4日</div>
@@ -87,119 +100,128 @@ table.result tbody tr.rank3 td{color:#CD7F32;font-weight:900;}
         <div class="meta-badge"><strong>参加台数</strong>14台</div>
         <div class="meta-badge"><strong>セクション数</strong>6</div>
         <a href="pdfs/bcup-open1-2025-0504.pdf" download class="pdf-btn">
-          <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-          PDFダウンロード
+          <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>PDFダウンロード
         </a>
       </div>
       <div class="result-table-wrap">
         <table class="result">
           <thead>
-            <tr>
-              <th>順位</th>
+            <tr class="header-group">
+              <th class="th-main" colspan="2"></th>
+              <th class="th-section" colspan="6">セクション減点</th>
+              <th class="th-main" colspan="4"></th>
+            </tr>
+            <tr class="header-labels">
+              <th style="width:50px;">順位</th>
               <th class="name-col">氏名</th>
+              <th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>S5</th><th>S6</th>
               <th>総減点</th>
-              <th>クリア数</th>
-              <th>クリーン数</th>
-              <th>SSタイム</th>
+              <th>クリア</th><th>クリーン</th><th>SSタイム</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="rank1"><td><span class="rank-num">1</span></td><td class="name-col">河内 良寛</td><td class="penalty-val">5</td><td>5</td><td>3</td><td class="ss-time">00:29.16</td></tr>
-            <tr class="rank2"><td><span class="rank-num">2</span></td><td class="name-col">矢吹 崇</td><td class="penalty-val">6</td><td>5</td><td>3</td><td class="ss-time">00:27.03</td></tr>
-            <tr class="rank3"><td><span class="rank-num">3</span></td><td class="name-col">篠原 泰寿</td><td class="penalty-val">6</td><td>5</td><td>3</td><td class="ss-time">00:27.59</td></tr>
-            <tr><td><span class="rank-num">4</span></td><td class="name-col">さわだ ひろみち</td><td class="penalty-val">6</td><td>5</td><td>3</td><td class="ss-time">00:30.69</td></tr>
-            <tr><td><span class="rank-num">5</span></td><td class="name-col">神田 美智子</td><td class="penalty-val">6</td><td>5</td><td>3</td><td class="ss-time">00:45.59</td></tr>
-            <tr><td><span class="rank-num">6</span></td><td class="name-col">出縄 雄紀</td><td class="penalty-val">7</td><td>5</td><td>3</td><td class="ss-time">00:39.54</td></tr>
-            <tr><td><span class="rank-num">7</span></td><td class="name-col">髙田 陽子</td><td class="penalty-val">8</td><td>5</td><td>2</td><td class="ss-time">00:32.60</td></tr>
-            <tr><td><span class="rank-num">8</span></td><td class="name-col">鬼塚 智子</td><td class="penalty-val">8</td><td>5</td><td>2</td><td class="ss-time">01:10.54</td></tr>
-            <tr><td><span class="rank-num">9</span></td><td class="name-col">原尻 成仁</td><td class="penalty-val">12</td><td>5</td><td>1</td><td class="ss-time">01:00.72</td></tr>
-            <tr><td><span class="rank-num">10</span></td><td class="name-col">赤松 典之</td><td class="penalty-val">15</td><td>5</td><td>2</td><td class="ss-time">01:02.59</td></tr>
-            <tr><td><span class="rank-num">11</span></td><td class="name-col">岡村 淳司</td><td class="penalty-val">17</td><td>5</td><td>3</td><td class="ss-time">00:41.11</td></tr>
-            <tr><td><span class="rank-num">12</span></td><td class="name-col">保田 浩彰</td><td class="penalty-val">18</td><td>4</td><td>3</td><td class="ss-time">00:26.72</td></tr>
-            <tr><td><span class="rank-num">13</span></td><td class="name-col">石山 剛</td><td class="penalty-val">19</td><td>5</td><td>1</td><td class="ss-time">00:50.22</td></tr>
-            <tr><td><span class="rank-num">14</span></td><td class="name-col">鬼塚 道夫</td><td class="penalty-val">21</td><td>5</td><td>3</td><td class="ss-time">00:49.92</td></tr>
+            <tr class="rank1"><td><span class="rank-num">1</span></td><td class="name-col">河内 良寛</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">2</td><td class="sec-zero">0</td><td class="sec">2</td><td class="sec-zero">0</td><td class="total">5</td><td>5</td><td>3</td><td class="ss-time">00:29.16</td></tr>
+            <tr class="rank2"><td><span class="rank-num">2</span></td><td class="name-col">矢吹 崇</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">3</td><td class="sec-zero">0</td><td class="sec">2</td><td class="sec-zero">0</td><td class="total">6</td><td>5</td><td>3</td><td class="ss-time">00:27.03</td></tr>
+            <tr class="rank3"><td><span class="rank-num">3</span></td><td class="name-col">篠原 泰寿</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">3</td><td class="sec-zero">0</td><td class="sec">2</td><td class="sec-zero">0</td><td class="total">6</td><td>5</td><td>3</td><td class="ss-time">00:27.59</td></tr>
+            <tr><td><span class="rank-num">4</span></td><td class="name-col">さわだ ひろみち</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">3</td><td class="sec-zero">0</td><td class="sec">2</td><td class="sec-zero">0</td><td class="total">6</td><td>5</td><td>3</td><td class="ss-time">00:30.69</td></tr>
+            <tr><td><span class="rank-num">5</span></td><td class="name-col">神田 美智子</td><td class="sec-zero">0</td><td class="sec-zero">0</td><td class="sec">2</td><td class="sec">1</td><td class="sec">3</td><td class="sec-zero">0</td><td class="total">6</td><td>5</td><td>3</td><td class="ss-time">00:45.59</td></tr>
+            <tr><td><span class="rank-num">6</span></td><td class="name-col">出縄 雄紀</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">4</td><td class="sec-zero">0</td><td class="sec">2</td><td class="sec-zero">0</td><td class="total">7</td><td>5</td><td>3</td><td class="ss-time">00:39.54</td></tr>
+            <tr><td><span class="rank-num">7</span></td><td class="name-col">髙田 陽子</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">3</td><td class="sec">1</td><td class="sec">3</td><td class="sec-zero">0</td><td class="total">8</td><td>5</td><td>2</td><td class="ss-time">00:32.60</td></tr>
+            <tr><td><span class="rank-num">8</span></td><td class="name-col">鬼塚 智子</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">3</td><td class="sec">1</td><td class="sec">3</td><td class="sec-zero">0</td><td class="total">8</td><td>5</td><td>2</td><td class="ss-time">01:10.54</td></tr>
+            <tr><td><span class="rank-num">9</span></td><td class="name-col">原尻 成仁</td><td class="sec">2</td><td class="sec">1</td><td class="sec">4</td><td class="sec">1</td><td class="sec">4</td><td class="sec-zero">0</td><td class="total">12</td><td>5</td><td>1</td><td class="ss-time">01:00.72</td></tr>
+            <tr><td><span class="rank-num">10</span></td><td class="name-col">赤松 典之</td><td class="sec">2</td><td class="sec">2</td><td class="sec">3</td><td class="sec-zero">0</td><td class="sec">8</td><td class="sec-zero">0</td><td class="total">15</td><td>5</td><td>2</td><td class="ss-time">01:02.59</td></tr>
+            <tr><td><span class="rank-num">11</span></td><td class="name-col">岡村 淳司</td><td class="sec-zero">0</td><td class="sec-zero">0</td><td class="sec">8</td><td class="sec">6</td><td class="sec">3</td><td class="sec-zero">0</td><td class="total">17</td><td>5</td><td>3</td><td class="ss-time">00:41.11</td></tr>
+            <tr><td><span class="rank-num">12</span></td><td class="name-col">保田 浩彰</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">10</td><td class="sec-zero">0</td><td class="sec">7</td><td class="sec-zero">0</td><td class="total">18</td><td>4</td><td>3</td><td class="ss-time">00:26.72</td></tr>
+            <tr><td><span class="rank-num">13</span></td><td class="name-col">石山 剛</td><td class="sec">2</td><td class="sec">1</td><td class="sec">3</td><td class="sec">6</td><td class="sec">7</td><td class="sec-zero">0</td><td class="total">19</td><td>5</td><td>1</td><td class="ss-time">00:50.22</td></tr>
+            <tr><td><span class="rank-num">14</span></td><td class="name-col">鬼塚 道夫</td><td class="sec-zero">0</td><td class="sec">9</td><td class="sec">6</td><td class="sec-zero">0</td><td class="sec">6</td><td class="sec-zero">0</td><td class="total">21</td><td>5</td><td>3</td><td class="ss-time">00:49.92</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- OPEN 第2戦 -->
+    <!-- ===== OPEN 第2戦 ===== -->
     <div id="panel-open2" class="tab-panel">
       <div class="result-meta">
         <div class="meta-badge"><strong>B-CUP Open 第2戦</strong>埼玉県 EJTC鳩山</div>
         <div class="meta-badge"><strong>参加台数</strong>8台</div>
         <div class="meta-badge"><strong>セクション数</strong>6</div>
         <a href="pdfs/bcup-open2.pdf" download class="pdf-btn">
-          <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-          PDFダウンロード
+          <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>PDFダウンロード
         </a>
       </div>
       <div class="result-table-wrap">
         <table class="result">
           <thead>
-            <tr>
-              <th>順位</th>
+            <tr class="header-group">
+              <th class="th-main" colspan="2"></th>
+              <th class="th-section" colspan="6">セクション減点</th>
+              <th class="th-main" colspan="4"></th>
+            </tr>
+            <tr class="header-labels">
+              <th style="width:50px;">順位</th>
               <th class="name-col">氏名</th>
+              <th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>S5</th><th>S6</th>
               <th>総減点</th>
-              <th>クリア数</th>
-              <th>クリーン数</th>
-              <th>SSタイム</th>
+              <th>クリア</th><th>クリーン</th><th>SSタイム</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="rank1"><td><span class="rank-num">1</span></td><td class="name-col">岡田 ヒロシ</td><td class="penalty-val">2</td><td>6</td><td>4</td><td class="ss-time">01:01.65</td></tr>
-            <tr class="rank2"><td><span class="rank-num">2</span></td><td class="name-col">篠原 タイジュ</td><td class="penalty-val">3</td><td>6</td><td>3</td><td class="ss-time">01:04.69</td></tr>
-            <tr class="rank3"><td><span class="rank-num">3</span></td><td class="name-col">小田 シンヤ</td><td class="penalty-val">3</td><td>6</td><td>3</td><td class="ss-time">01:20.19</td></tr>
-            <tr><td><span class="rank-num">4</span></td><td class="name-col">鬼塚 トモコ</td><td class="penalty-val">7</td><td>6</td><td>1</td><td class="ss-time">04:00.50</td></tr>
-            <tr><td><span class="rank-num">5</span></td><td class="name-col">岡村 アツシ</td><td class="penalty-val">8</td><td>6</td><td>2</td><td class="ss-time">01:05.75</td></tr>
-            <tr><td><span class="rank-num">6</span></td><td class="name-col">矢吹 タカシ</td><td class="penalty-val">11</td><td>6</td><td>2</td><td class="ss-time">01:33.25</td></tr>
-            <tr><td><span class="rank-num">7</span></td><td class="name-col">出縄 ユウキ</td><td class="penalty-val">15</td><td>5</td><td>1</td><td class="ss-time">01:36.25</td></tr>
-            <tr><td><span class="rank-num">8</span></td><td class="name-col">鬼塚 ミチオ</td><td class="penalty-val">16</td><td>5</td><td>1</td><td class="ss-time">00:52.35</td></tr>
+            <tr class="rank1"><td><span class="rank-num">1</span></td><td class="name-col">岡田 ヒロシ</td><td class="sec-zero">0</td><td class="sec-zero">0</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">1</td><td class="sec-zero">0</td><td class="total">2</td><td>6</td><td>4</td><td class="ss-time">01:01.65</td></tr>
+            <tr class="rank2"><td><span class="rank-num">2</span></td><td class="name-col">篠原 タイジュ</td><td class="sec-zero">0</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">1</td><td class="sec">1</td><td class="sec-zero">0</td><td class="total">3</td><td>6</td><td>3</td><td class="ss-time">01:04.69</td></tr>
+            <tr class="rank3"><td><span class="rank-num">3</span></td><td class="name-col">小田 シンヤ</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">1</td><td class="sec-zero">0</td><td class="total">3</td><td>6</td><td>3</td><td class="ss-time">01:20.19</td></tr>
+            <tr><td><span class="rank-num">4</span></td><td class="name-col">鬼塚 トモコ</td><td class="sec">2</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">1</td><td class="sec">2</td><td class="sec">1</td><td class="total">7</td><td>6</td><td>1</td><td class="ss-time">04:00.50</td></tr>
+            <tr><td><span class="rank-num">5</span></td><td class="name-col">岡村 アツシ</td><td class="sec">1</td><td class="sec-zero">0</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">1</td><td class="sec">5</td><td class="total">8</td><td>6</td><td>2</td><td class="ss-time">01:05.75</td></tr>
+            <tr><td><span class="rank-num">6</span></td><td class="name-col">矢吹 タカシ</td><td class="sec">1</td><td class="sec-zero">0</td><td class="sec">2</td><td class="sec">1</td><td class="sec">7</td><td class="sec-zero">0</td><td class="total">11</td><td>6</td><td>2</td><td class="ss-time">01:33.25</td></tr>
+            <tr><td><span class="rank-num">7</span></td><td class="name-col">出縄 ユウキ</td><td class="sec">1</td><td class="sec">1</td><td class="sec">2</td><td class="sec">10</td><td class="sec">1</td><td class="sec-zero">0</td><td class="total">15</td><td>5</td><td>1</td><td class="ss-time">01:36.25</td></tr>
+            <tr><td><span class="rank-num">8</span></td><td class="name-col">鬼塚 ミチオ</td><td class="sec">1</td><td class="sec">10</td><td class="sec">3</td><td class="sec">1</td><td class="sec">1</td><td class="sec-zero">0</td><td class="total">16</td><td>5</td><td>1</td><td class="ss-time">00:52.35</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- EXPERT 第1戦 -->
+    <!-- ===== EXPERT 第1戦 ===== -->
     <div id="panel-expert1" class="tab-panel">
       <div class="result-meta">
         <div class="meta-badge"><strong>B-CUP Expert 第1戦</strong>埼玉県 EJTC鳩山</div>
         <div class="meta-badge"><strong>参加台数</strong>15台</div>
         <div class="meta-badge"><strong>セクション数</strong>6</div>
         <a href="pdfs/bcup-expert1.pdf" download class="pdf-btn">
-          <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-          PDFダウンロード
+          <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>PDFダウンロード
         </a>
       </div>
       <div class="result-table-wrap">
         <table class="result">
           <thead>
-            <tr>
-              <th>順位</th>
-              <th>No</th>
+            <tr class="header-group">
+              <th class="th-main" colspan="3"></th>
+              <th class="th-section" colspan="6">セクション減点</th>
+              <th class="th-main" colspan="4"></th>
+            </tr>
+            <tr class="header-labels">
+              <th style="width:50px;">順位</th>
+              <th style="width:40px;">No</th>
               <th class="name-col">氏名</th>
+              <th>S1</th><th>S2</th><th>S3</th><th>S4</th><th>S5</th><th>S6</th>
               <th>総減点</th>
-              <th>クリア数</th>
-              <th>クリーン数</th>
-              <th>SSタイム</th>
+              <th>クリア</th><th>クリーン</th><th>SSタイム</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="rank1"><td><span class="rank-num">1</span></td><td>1</td><td class="name-col">月桂樹 京一</td><td class="penalty-val">2</td><td>5</td><td>4</td><td class="ss-time">00:51.00</td></tr>
-            <tr class="rank2"><td><span class="rank-num">2</span></td><td>2</td><td class="name-col">水谷 K</td><td class="penalty-val">3</td><td>5</td><td>3</td><td class="ss-time">00:47.00</td></tr>
-            <tr class="rank3"><td><span class="rank-num">3</span></td><td>7</td><td class="name-col">木崎 利明</td><td class="penalty-val">6</td><td>5</td><td>2</td><td class="ss-time">01:14.00</td></tr>
-            <tr><td><span class="rank-num">4</span></td><td>3</td><td class="name-col">山田 さとる</td><td class="penalty-val">3</td><td>5</td><td>3</td><td class="ss-time">00:57.00</td></tr>
-            <tr><td><span class="rank-num">5</span></td><td>13</td><td class="name-col">清水 康博</td><td class="penalty-val">22</td><td>5</td><td>2</td><td class="ss-time">01:05.00</td></tr>
-            <tr><td><span class="rank-num">6</span></td><td>4</td><td class="name-col">中佐 一</td><td class="penalty-val">4</td><td>5</td><td>3</td><td class="ss-time">00:56.00</td></tr>
-            <tr><td><span class="rank-num">7</span></td><td>9</td><td class="name-col">高橋 信也</td><td class="penalty-val">11</td><td>5</td><td>2</td><td class="ss-time">00:51.00</td></tr>
-            <tr><td><span class="rank-num">8</span></td><td>10</td><td class="name-col">河内 良貴</td><td class="penalty-val">11</td><td>5</td><td>2</td><td class="ss-time">02:15.00</td></tr>
-            <tr><td><span class="rank-num">9</span></td><td>15</td><td class="name-col">出縄 雄紀</td><td class="penalty-val">32</td><td>2</td><td>2</td><td class="ss-time">02:44.00</td></tr>
-            <tr><td><span class="rank-num">10</span></td><td>12</td><td class="name-col">赤松</td><td class="penalty-val">12</td><td>5</td><td>2</td><td class="ss-time">01:12.00</td></tr>
-            <tr><td><span class="rank-num">11</span></td><td>8</td><td class="name-col">岡村</td><td class="penalty-val">9</td><td>5</td><td>1</td><td class="ss-time">01:21.00</td></tr>
-            <tr><td><span class="rank-num">12</span></td><td>6</td><td class="name-col">矢吹 圭</td><td class="penalty-val">6</td><td>5</td><td>2</td><td class="ss-time">00:56.00</td></tr>
-            <tr><td><span class="rank-num">13</span></td><td>11</td><td class="name-col">保田</td><td class="penalty-val">11</td><td>5</td><td>1</td><td class="ss-time">00:53.00</td></tr>
-            <tr><td><span class="rank-num">14</span></td><td>14</td><td class="name-col">高田</td><td class="penalty-val">25</td><td>4</td><td>1</td><td class="ss-time">01:09.00</td></tr>
-            <tr><td><span class="rank-num">15</span></td><td>5</td><td class="name-col">鬼塚</td><td class="penalty-val">6</td><td>5</td><td>2</td><td class="ss-time">00:55.00</td></tr>
+            <tr class="rank1"><td><span class="rank-num">1</span></td><td>1</td><td class="name-col">月桂樹 京一</td><td class="sec">1</td><td class="sec-zero">0</td><td class="sec-zero">0</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec-zero">0</td><td class="total">2</td><td>5</td><td>4</td><td class="ss-time">00:51.00</td></tr>
+            <tr class="rank2"><td><span class="rank-num">2</span></td><td>2</td><td class="name-col">水谷 K</td><td class="sec">1</td><td class="sec">1</td><td class="sec-zero">0</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec-zero">0</td><td class="total">3</td><td>5</td><td>3</td><td class="ss-time">00:47.00</td></tr>
+            <tr class="rank3"><td><span class="rank-num">3</span></td><td>7</td><td class="name-col">木崎 利明</td><td class="sec">1</td><td class="sec">1</td><td class="sec">1</td><td class="sec-zero">0</td><td class="sec">3</td><td class="sec-zero">0</td><td class="total">6</td><td>5</td><td>2</td><td class="ss-time">01:14.00</td></tr>
+            <tr><td><span class="rank-num">4</span></td><td>3</td><td class="name-col">山田 さとる</td><td class="sec">1</td><td class="sec">1</td><td class="sec-zero">0</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec-zero">0</td><td class="total">3</td><td>5</td><td>3</td><td class="ss-time">00:57.00</td></tr>
+            <tr><td><span class="rank-num">5</span></td><td>13</td><td class="name-col">清水 康博</td><td class="sec">6</td><td class="sec">7</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">8</td><td class="sec-zero">0</td><td class="total">22</td><td>5</td><td>2</td><td class="ss-time">01:05.00</td></tr>
+            <tr><td><span class="rank-num">6</span></td><td>4</td><td class="name-col">中佐 一</td><td class="sec">1</td><td class="sec">2</td><td class="sec-zero">0</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec-zero">0</td><td class="total">4</td><td>5</td><td>3</td><td class="ss-time">00:56.00</td></tr>
+            <tr><td><span class="rank-num">7</span></td><td>9</td><td class="name-col">高橋 信也</td><td class="sec">1</td><td class="sec">8</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">1</td><td class="sec-zero">0</td><td class="total">11</td><td>5</td><td>2</td><td class="ss-time">00:51.00</td></tr>
+            <tr><td><span class="rank-num">8</span></td><td>10</td><td class="name-col">河内 良貴</td><td class="sec">2</td><td class="sec">6</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">2</td><td class="sec-zero">0</td><td class="total">11</td><td>5</td><td>2</td><td class="ss-time">02:15.00</td></tr>
+            <tr><td><span class="rank-num">9</span></td><td>15</td><td class="name-col">出縄 雄紀</td><td class="sec">2</td><td class="sec">10</td><td class="sec-zero">0</td><td class="sec">10</td><td class="sec">10</td><td class="sec-zero">0</td><td class="total">32</td><td>2</td><td>2</td><td class="ss-time">02:44.00</td></tr>
+            <tr><td><span class="rank-num">10</span></td><td>12</td><td class="name-col">赤松</td><td class="sec">7</td><td class="sec">2</td><td class="sec">1</td><td class="sec-zero">0</td><td class="sec">2</td><td class="sec-zero">0</td><td class="total">12</td><td>5</td><td>2</td><td class="ss-time">01:12.00</td></tr>
+            <tr><td><span class="rank-num">11</span></td><td>8</td><td class="name-col">岡村</td><td class="sec">2</td><td class="sec">2</td><td class="sec">2</td><td class="sec">1</td><td class="sec">2</td><td class="sec-zero">0</td><td class="total">9</td><td>5</td><td>1</td><td class="ss-time">01:21.00</td></tr>
+            <tr><td><span class="rank-num">12</span></td><td>6</td><td class="name-col">矢吹 圭</td><td class="sec">1</td><td class="sec">3</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">1</td><td class="sec-zero">0</td><td class="total">6</td><td>5</td><td>2</td><td class="ss-time">00:56.00</td></tr>
+            <tr><td><span class="rank-num">13</span></td><td>11</td><td class="name-col">保田</td><td class="sec">1</td><td class="sec">3</td><td class="sec">5</td><td class="sec">1</td><td class="sec">1</td><td class="sec-zero">0</td><td class="total">11</td><td>5</td><td>1</td><td class="ss-time">00:53.00</td></tr>
+            <tr><td><span class="rank-num">14</span></td><td>14</td><td class="name-col">高田</td><td class="sec">1</td><td class="sec">3</td><td class="sec">8</td><td class="sec">10</td><td class="sec">3</td><td class="sec-zero">0</td><td class="total">25</td><td>4</td><td>1</td><td class="ss-time">01:09.00</td></tr>
+            <tr><td><span class="rank-num">15</span></td><td>5</td><td class="name-col">鬼塚</td><td class="sec">2</td><td class="sec">2</td><td class="sec-zero">0</td><td class="sec">1</td><td class="sec">1</td><td class="sec-zero">0</td><td class="total">6</td><td>5</td><td>2</td><td class="ss-time">00:55.00</td></tr>
           </tbody>
         </table>
       </div>
@@ -227,11 +249,11 @@ table.result tbody tr.rank3 td{color:#CD7F32;font-weight:900;}
 </footer>
 
 <script>
-function switchTab(id){
-  document.querySelectorAll('.tab-btn').forEach((b,i)=>{b.classList.remove('active');});
+function switchTab(id,btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   document.getElementById('panel-'+id).classList.add('active');
-  event.currentTarget.classList.add('active');
+  btn.classList.add('active');
 }
 const ham=document.getElementById('hamburger'),nav=document.getElementById('navLinks');
 ham.addEventListener('click',()=>nav.classList.toggle('open'));
