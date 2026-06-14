@@ -25,11 +25,24 @@
 .spec-row:last-child{border-bottom:none;}
 .spec-key{font-size:12px;color:var(--gray);width:140px;flex-shrink:0;}
 .spec-val{font-size:13px;color:#fff;font-weight:700;}
+.notes-box{background:#1a0a0a;border:2px solid rgba(232,120,32,0.4);padding:24px;margin-bottom:28px;}
+.notes-box h3{font-size:11px;font-weight:900;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-bottom:16px;}
+.notes-box ul{list-style:none;display:flex;flex-direction:column;gap:14px;}
+.notes-box li{font-size:13px;color:rgba(255,255,255,0.8);line-height:1.8;padding-left:20px;position:relative;}
+.notes-box li::before{content:"・";position:absolute;left:0;color:var(--orange);}
 .buy-area{background:var(--dark3);border:2px solid var(--orange);padding:24px;}
 .buy-area p{font-size:12px;color:var(--gray);margin-bottom:16px;line-height:1.7;}
 .buy-btn{display:block;text-align:center;background:var(--orange);color:#fff;font-size:16px;font-weight:900;letter-spacing:3px;padding:18px;text-decoration:none;text-transform:uppercase;transition:.2s;}
 .buy-btn:hover{background:#c06010;}
 .buy-note{font-size:11px;color:var(--gray);margin-top:12px;text-align:center;}
+.article-section{padding:70px 20px;background:var(--dark);}
+.article-inner{max-width:860px;margin:0 auto;}
+.article-block{margin-bottom:52px;}
+.article-block h3{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:14px;border-left:4px solid var(--orange);padding-left:14px;}
+.article-block p{font-size:14px;color:rgba(255,255,255,0.82);line-height:2;margin-bottom:12px;}
+.article-block p strong{color:var(--orange);}
+.article-block .highlight{background:rgba(34,34,204,0.12);border:1px solid rgba(34,34,204,0.3);padding:18px 20px;border-radius:2px;margin:16px 0;}
+.article-block .highlight p{margin:0;font-size:14px;color:rgba(255,255,255,0.9);line-height:1.9;}
 section.related{padding:70px 20px;background:var(--dark2);}
 .related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;margin-top:32px;}
 .rel-card{background:var(--dark);border:1px solid rgba(255,255,255,0.07);overflow:hidden;text-decoration:none;transition:.2s;}
@@ -52,29 +65,36 @@ section.related{padding:70px 20px;background:var(--dark2);}
 <div class="product-hero">
   <div class="container">
     <div class="breadcrumb"><a href="../index.html">HOME</a> &gt; <a href="../index.html#products">製品一覧</a> &gt; バトルガード</div>
-    <div class="section-label">Safety / Under Guard</div>
-    <h1 class="section-title">バトル<span class="accent">ガード</span></h1>
+    <div class="section-label">Transfer Guard / JB64 · JB74</div>
+    <h1 class="section-title">トランスファー<br>バトル<span class="accent">ガード</span></h1>
   </div>
 </div>
 <div class="product-main">
-  <div class="product-gallery"><img src="../images/img_battleguard.jpg" alt="バトルガード"></div>
+  <div class="product-gallery"><img src="../images/img_battleguard.jpg" alt="トランスファー バトルガードシステム"></div>
   <div class="product-info">
-    <div class="product-category">Safety / JB64 · JB74専用</div>
-    <h1>岩場も恐れず<br>突き進め</h1>
-    <p class="product-catch">サイドシル・ロッカーパネルを強固に守るアンダーガード。ガレ場・岩場での車体ダメージを最小化し、ボディへの恐怖感をなくして果敢なラインを選べるようにする。</p>
+    <div class="product-category">Transfer Guard / JB64 · JB74専用</div>
+    <h1>障害物から<br>トランスファーを守る</h1>
+    <p class="product-catch">B-STYLE トランスファー バトルガードシステム。様々なメーカーの破損事例と、修理・補強を重ねてきた経験と実績から生まれた、本物の強さ。障害物へのヒットからトランスファーを確実に守ります。</p>
     <div class="features-list">
-      <div class="feature-row"><div class="feat-num">①</div><div class="feat-body"><strong>サイドシルを岩から守る</strong><span>接触によるへこみや傷を防ぎ、車体ダメージを最小化する</span></div></div>
-      <div class="feature-row"><div class="feat-num">②</div><div class="feat-body"><strong>精神的余裕が大きく増す</strong><span>ボディへの恐怖がなくなり、果敢なラインを迷わず選べる</span></div></div>
-      <div class="feature-row"><div class="feat-num">③</div><div class="feat-body"><strong>高強度スチール製</strong><span>実戦使用に耐える強度を優先した設計</span></div></div>
-      <div class="feature-row"><div class="feat-num">④</div><div class="feat-body"><strong>JB64/74専用設計</strong><span>車体に密着し、すき間なくサイドを保護する</span></div></div>
+      <div class="feature-row"><div class="feat-num">①</div><div class="feat-body"><strong>現場の経験から生まれた設計</strong><span>多数の破損事例・修理・補強の実績を設計に直結。机上の理論ではなく実戦データが根拠</span></div></div>
+      <div class="feature-row"><div class="feat-num">②</div><div class="feat-body"><strong>バトルに耐える強度・耐久性</strong><span>「バトルガード」の名が示す通り、競技の最前線で求められる強度と耐久性を実現</span></div></div>
+      <div class="feature-row"><div class="feat-num">③</div><div class="feat-body"><strong>トランスファーを直撃から守る</strong><span>岩・障害物へのヒット衝撃を受け止め、トランスファー本体へのダメージを最小化</span></div></div>
+      <div class="feature-row"><div class="feat-num">④</div><div class="feat-body"><strong>本格的ではなく、本物</strong><span>B-STYLEは「なんとなく頑丈そう」ではなく、熱いユーザーのご期待に本気で応える製品を作る</span></div></div>
     </div>
     <div class="specs-box">
       <h3>製品仕様</h3>
       <div class="spec-row"><span class="spec-key">対応車種</span><span class="spec-val">JB64W / JB74W専用</span></div>
+      <div class="spec-row"><span class="spec-key">保護部位</span><span class="spec-val">トランスファー</span></div>
       <div class="spec-row"><span class="spec-key">素材</span><span class="spec-val">高強度スチール</span></div>
-      <div class="spec-row"><span class="spec-key">保護部位</span><span class="spec-val">サイドシル / ロッカーパネル</span></div>
-      <div class="spec-row"><span class="spec-key">取付</span><span class="spec-val">ボルトオン（専用ブラケット付属）</span></div>
+      <div class="spec-row"><span class="spec-key">取付</span><span class="spec-val">ボルトオン（ブラケット付属）</span></div>
       <div class="spec-row"><span class="spec-key">送料</span><span class="spec-val">全国無料</span></div>
+    </div>
+    <div class="notes-box">
+      <h3>※ 装着前にご確認ください</h3>
+      <ul>
+        <li>トランスファーバトルガードシステムを装着すると、走行時にトランスファーの駆動音が反響し、車内に聞こえてくる場合があります。<strong>快適性を重視される方には装着をお薦めしません。</strong></li>
+        <li>トランスファーオイル交換の際は、ガード部分の取り外しが必要です。ブラケット類の取り外しは不要です。</li>
+      </ul>
     </div>
     <div class="buy-area">
       <p>JB64W / JB74W専用設計です。車種をご確認のうえお進みください。</p>
@@ -83,6 +103,35 @@ section.related{padding:70px 20px;background:var(--dark2);}
     </div>
   </div>
 </div>
+
+<section class="article-section">
+  <div class="article-inner">
+    <div class="section-label">Product Story</div>
+    <h2 class="section-title" style="margin-bottom:8px;">なぜ、バトルガードが<br><span class="accent">必要</span>なのか</h2>
+    <div class="divider"></div>
+
+    <div class="article-block">
+      <h3>実戦が教えてくれた、トランスファーの弱点</h3>
+      <p>オフロード競技やトレイル走行において、トランスファーはボディ下部の中心部に位置し、岩や障害物からの直撃を受けやすい部位です。B-STYLEはこれまで、様々なメーカーの車両における<strong>多数の破損事例を目の当たりにし、修理・補強を繰り返してきました。</strong></p>
+      <p>その経験の積み重ねが、このバトルガードシステムの設計に直結しています。「何となく頑丈そう」ではなく、実際に何度も壊れ、守り切れなかった事例から学んだ知見が形になっています。</p>
+    </div>
+
+    <div class="article-block">
+      <h3>「バトルガード」という名前の意味</h3>
+      <div class="highlight">
+        <p>バトル——戦いの場で耐えうる強度と耐久性。<br>ガード——確実に、守り切る。<br><br>この製品名には、B-STYLEの製品への姿勢がそのまま込められています。</p>
+      </div>
+      <p>競技に臨む選手は、コース上で何が起きるかわかりません。予測不能な障害物へのヒット、想定外の角度からの衝撃——そのすべてに耐え、トランスファーを守り続けることがこの製品の使命です。</p>
+    </div>
+
+    <div class="article-block">
+      <h3>本格的ではなく、本物を</h3>
+      <p>B-STYLEは「本格的なオフロードパーツ」という言葉を使いません。本格的とは、本物に似せたもの。私たちが目指すのは<strong>本物</strong>です。</p>
+      <p>熱い思いをジムニーに注ぐユーザーが、安心してフルアタックできる環境を作る。その責任を果たすために、B-STYLEは妥協のない製品を作り続けます。</p>
+    </div>
+  </div>
+</section>
+
 <section class="related">
   <div class="container">
     <div class="section-label">Related Products</div>
