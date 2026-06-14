@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B-STYLE | ジムニー JB64/74 専用カスタムパーツ</title>
+<meta name="description" content="B-STYLEはスズキ ジムニーJB64W/JB74W専用の本格オフロードカスタムパーツを製造・販売。EMロッカー、ダウンギア、強化シャフトなど走破性を極める製品を揃えています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --blue:#2222CC;
+  --orange:#E87820;
+  --dark:#0d0d1a;
+  --dark2:#1a1a2e;
+  --dark3:#16213e;
+  --white:#ffffff;
+  --gray:#aaaaaa;
+  --light:#f5f0e8;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden;}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,26,0.95);backdrop-filter:blur(10px);border-bottom:2px solid var(--blue);display:flex;align-items:center;padding:0 32px;height:64px;}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo img{height:38px;}
+.nav-logo span{font-family:'Oswald',sans-serif;font-size:20px;color:var(--white);letter-spacing:2px;}
+.nav-links{display:flex;gap:28px;margin-left:auto;list-style:none;}
+.nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--orange);}
+.nav-cta{background:var(--orange);color:#fff !important;padding:8px 18px;border-radius:2px;}
+.nav-cta:hover{background:#d06010 !important;color:#fff !important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;margin-left:auto;}
+.hamburger span{display:block;width:26px;height:2px;background:#fff;transition:.3s;}
+
+/* ===== HERO ===== */
+.hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:var(--dark2);}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#0d0d1a 0%,#1a1a2e 40%,#0a0a22 100%);}
+.hero-bg::before{content:'';position:absolute;inset:0;background:url('images/img_emlocker.jpg') center/cover no-repeat;opacity:0.18;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(34,34,204,0.08) 1px,transparent 1px),linear-gradient(90deg,rgba(34,34,204,0.08) 1px,transparent 1px);background-size:60px 60px;}
+.hero-content{position:relative;z-index:1;padding:20px;}
+.hero-badge{display:inline-block;background:var(--orange);color:#fff;font-size:11px;font-weight:900;letter-spacing:4px;padding:5px 16px;margin-bottom:24px;text-transform:uppercase;}
+.hero-title{font-family:'Oswald',sans-serif;font-size:clamp(42px,7vw,90px);font-weight:700;line-height:1.05;color:#fff;margin-bottom:16px;text-transform:uppercase;letter-spacing:3px;}
+.hero-title .line2{color:var(--orange);}
+.hero-sub{font-size:clamp(13px,1.8vw,17px);color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:36px;max-width:560px;margin-left:auto;margin-right:auto;}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn{display:inline-block;padding:14px 36px;font-size:14px;font-weight:900;letter-spacing:2px;text-decoration:none;text-transform:uppercase;transition:.2s;border:2px solid transparent;}
+.btn-primary{background:var(--blue);color:#fff;border-color:var(--blue);}
+.btn-primary:hover{background:#1818aa;border-color:#1818aa;}
+.btn-outline{background:transparent;color:#fff;border-color:rgba(255,255,255,0.5);}
+.btn-outline:hover{border-color:var(--orange);color:var(--orange);}
+.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:3px;}
+.hero-scroll::after{content:'';display:block;width:1px;height:36px;background:linear-gradient(var(--orange),transparent);}
+
+/* ===== SECTION BASE ===== */
+section{padding:90px 20px;}
+.container{max-width:1160px;margin:0 auto;}
+.section-label{font-size:10px;font-weight:900;letter-spacing:5px;color:var(--orange);text-transform:uppercase;margin-bottom:10px;}
+.section-title{font-family:'Oswald',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:16px;}
+.section-title .accent{color:var(--blue);}
+.section-lead{font-size:14px;color:var(--gray);line-height:1.8;max-width:600px;}
+.divider{width:48px;height:3px;background:var(--orange);margin:20px 0 48px;}
+
+/* ===== PRODUCTS ===== */
+#products{background:var(--dark2);}
+.products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;}
+.product-card{background:var(--dark3);border:1px solid rgba(255,255,255,0.07);overflow:hidden;transition:.25s;position:relative;}
+.product-card:hover{transform:translateY(-4px);border-color:var(--blue);}
+.product-card:hover .card-img img{transform:scale(1.06);}
+.card-img{height:200px;overflow:hidden;background:#111;}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:.4s;}
+.card-body{padding:20px;}
+.card-tag{font-size:9px;font-weight:900;letter-spacing:3px;color:var(--orange);text-transform:uppercase;margin-bottom:8px;}
+.card-name{font-size:17px;font-weight:900;color:#fff;margin-bottom:8px;line-height:1.3;}
+.card-desc{font-size:12px;color:var(--gray);line-height:1.7;margin-bottom:18px;}
+.card-link{display:inline-block;font-size:11px;font-weight:900;letter-spacing:2px;color:#fff;background:var(--blue);padding:9px 20px;text-decoration:none;text-transform:uppercase;transition:.2s;}
+.card-link:hover{background:var(--orange);}
+
+/* ===== ABOUT ===== */
+#about{background:var(--dark);}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.about-img{position:relative;}
+.about-img img{width:100%;display:block;filter:brightness(0.85);}
+.about-img::before{content:'B-STYLE';position:absolute;bottom:-12px;right:-12px;font-family:'Oswald',sans-serif;font-size:80px;font-weight:700;color:rgba(34,34,204,0.15);line-height:1;z-index:0;pointer-events:none;}
+.about-frame{position:absolute;inset:-8px;border:2px solid var(--orange);z-index:-1;}
+.about-text .section-lead{max-width:100%;}
+.about-facts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;}
+.fact{border-left:3px solid var(--orange);padding:10px 16px;}
+.fact-num{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;color:var(--orange);line-height:1;}
+.fact-label{font-size:11px;color:var(--gray);margin-top:3px;}
+
+/* ===== BCUP ===== */
+#bcup{background:var(--dark2);}
+.bcup-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.bcup-card{background:var(--dark);border:1px solid rgba(255,255,255,0.08);padding:32px;position:relative;overflow:hidden;}
+.bcup-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--blue);}
+.bcup-card.expert::before{background:var(--orange);}
+.bcup-type{font-size:10px;font-weight:900;letter-spacing:4px;color:var(--blue);text-transform:uppercase;margin-bottom:12px;}
+.bcup-card.expert .bcup-type{color:var(--orange);}
+.bcup-name{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;color:#fff;margin-bottom:20px;}
+.bcup-info{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;}
+.bcup-row{display:flex;gap:12px;align-items:baseline;}
+.bcup-key{font-size:10px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;width:60px;flex-shrink:0;}
+.bcup-val{font-size:14px;color:#fff;font-weight:700;}
+.bcup-tag{font-size:11px;color:var(--gray);line-height:1.7;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;}
+
+/* ===== CONTACT ===== */
+#contact{background:var(--dark);}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.contact-info{display:flex;flex-direction:column;gap:20px;margin-top:8px;}
+.contact-item{display:flex;gap:16px;align-items:flex-start;}
+.contact-icon{width:42px;height:42px;background:var(--blue);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;}
+.contact-detail strong{display:block;font-size:13px;color:var(--orange);letter-spacing:1px;margin-bottom:3px;}
+.contact-detail span{font-size:15px;color:#fff;font-weight:700;}
+.contact-detail small{display:block;font-size:11px;color:var(--gray);margin-top:2px;}
+.contact-form{background:var(--dark2);padding:36px;border:1px solid rgba(255,255,255,0.07);}
+.form-title{font-size:14px;font-weight:900;color:#fff;margin-bottom:20px;letter-spacing:1px;}
+.form-group{margin-bottom:16px;}
+.form-group label{display:block;font-size:11px;color:var(--gray);letter-spacing:1px;margin-bottom:6px;}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:11px 14px;font-size:13px;font-family:inherit;outline:none;transition:.2s;}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--blue);}
+.form-group textarea{height:100px;resize:vertical;}
+.form-group select option{background:var(--dark2);}
+.btn-submit{width:100%;background:var(--orange);color:#fff;border:none;padding:14px;font-size:14px;font-weight:900;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:.2s;margin-top:4px;}
+.btn-submit:hover{background:#c06010;}
+
+/* ===== PARTNERS ===== */
+#partners{background:var(--dark2);padding:60px 20px;}
+.partners-grid{display:flex;flex-wrap:wrap;gap:20px;margin-top:32px;}
+.partner-card{background:var(--dark);border:1px solid rgba(255,255,255,0.08);padding:18px 24px;flex:1;min-width:200px;}
+.partner-name{font-size:14px;font-weight:900;color:#fff;margin-bottom:4px;}
+.partner-area{font-size:11px;color:var(--orange);}
+.partner-note{font-size:11px;color:var(--gray);margin-top:4px;}
+
+/* ===== FOOTER ===== */
+footer{background:#060610;border-top:2px solid var(--blue);padding:40px 20px 24px;}
+.footer-inner{max-width:1160px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:28px;}
+.footer-brand img{height:40px;margin-bottom:12px;}
+.footer-brand p{font-size:11px;color:var(--gray);line-height:1.8;}
+.footer-links h4{font-size:11px;font-weight:900;letter-spacing:3px;color:var(--orange);margin-bottom:12px;text-transform:uppercase;}
+.footer-links ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.footer-links a{font-size:12px;color:var(--gray);text-decoration:none;transition:.2s;}
+.footer-links a:hover{color:var(--orange);}
+.footer-bottom{max-width:1160px;margin:28px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,0.07);display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--gray);flex-wrap:wrap;gap:10px;}
+
+/* ===== MOBILE ===== */
+@media(max-width:768px){
+  .nav-links{display:none;position:fixed;inset:64px 0 0 0;background:rgba(10,10,26,0.98);flex-direction:column;gap:0;padding:20px 0;}
+  .nav-links.open{display:flex;}
+  .nav-links li{border-bottom:1px solid rgba(255,255,255,0.06);}
+  .nav-links a{display:block;padding:16px 32px;font-size:15px;}
+  .hamburger{display:flex;}
+  .about-inner,.bcup-grid,.contact-inner{grid-template-columns:1fr;}
+  .about-img{display:none;}
+  .about-facts{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="images/logo.png" alt="B-STYLE">
+    <span>B-STYLE</span>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#products">製品</a></li>
+    <li><a href="#about">ブランド</a></li>
+    <li><a href="#bcup">B-CUP</a></li>
+    <li><a href="#partners">取扱店</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">JB64W / JB74W Specialist</div>
+    <h1 class="hero-title">
+      JIMNY<br>
+      <span class="line2">GO BEYOND.</span>
+    </h1>
+    <p class="hero-sub">走破性の限界を超える。B-STYLEはジムニーのポテンシャルを本気で引き出す、専用カスタムパーツブランドです。</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn btn-primary">製品を見る</a>
+      <a href="#contact" class="btn btn-outline">お問い合わせ</a>
+    </div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="container">
+    <div class="section-label">Products</div>
+    <h2 class="section-title">走破性を<span class="accent">極める</span>パーツたち</h2>
+    <p class="section-lead">すべてJB64W / JB74W専用設計。本物のオフロードに必要なパーツを、本物の品質で。</p>
+    <div class="divider"></div>
+    <div class="products-grid">
+
+      <div class="product-card">
+        <div class="card-img"><img src="images/img_emlocker.jpg" alt="EMロッカー"></div>
+        <div class="card-body">
+          <div class="card-tag">Diff Lock</div>
+          <div class="card-name">EMロッカー</div>
+          <div class="card-desc">電磁力でデフをロック。スタックの恐怖をゼロにし、初心者から競技者まで走破性を別次元へ引き上げる。</div>
+          <a href="products/em-locker.html" class="card-link">詳細を見る</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="card-img"><img src="images/img_airlocker.jpg" alt="エアーロッカー"></div>
+        <div class="card-body">
+          <div class="card-tag">Diff Lock</div>
+          <div class="card-name">エアーロッカー</div>
+          <div class="card-desc">空気圧で物理的にデフをロック。スイッチ一つで確実なロック・解除。信頼性抜群のシステム。</div>
+          <a href="products/air-locker.html" class="card-link">詳細を見る</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="card-img"><img src="images/img_downgear.jpg" alt="ダウンギア"></div>
+        <div class="card-body">
+          <div class="card-tag">Transfer</div>
+          <div class="card-name">エキストラダウンギア</div>
+          <div class="card-desc">ギア比5.73:1。アイドリングだけで岩場・急斜面を制圧。クラッチ操作を激減させる革命的パーツ。</div>
+          <a href="products/downgear.html" class="card-link">詳細を見る</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="card-img"><img src="images/img_2low.jpg" alt="2Lowシステム"></div>
+        <div class="card-body">
+          <div class="card-tag">Transfer / World First</div>
+          <div class="card-name">2Lowシステム Ver.2</div>
+          <div class="card-desc">世界初開発。迷子レバー現象を完全解消したトランスファー改良システム。競技者のための決定版。</div>
+          <a href="products/2low.html" class="card-link">詳細を見る</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="card-img"><img src="images/img_shaft.jpg" alt="強化シャフト"></div>
+        <div class="card-body">
+          <div class="card-tag">Driveline</div>
+          <div class="card-name">フロント強化シャフト</div>
+          <div class="card-desc">破断強度4,598N-m。ヒューズシャフトとは一線を画す本物の強化品。26スプライン対応。</div>
+          <a href="products/shaft.html" class="card-link">詳細を見る</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="card-img"><img src="images/img_battleguard.jpg" alt="バトルガード"></div>
+        <div class="card-body">
+          <div class="card-tag">Safety</div>
+          <div class="card-name">バトルガード</div>
+          <div class="card-desc">サイドシルを岩から守る高強度アンダーガード。ボディダメージへの恐怖をなくし果敢なラインを選べる。</div>
+          <a href="products/battleguard.html" class="card-link">詳細を見る</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="card-img"><img src="images/img_frame.jpg" alt="強化フレームキャップ"></div>
+        <div class="card-body">
+          <div class="card-tag">Safety</div>
+          <div class="card-name">強化フレームキャップ</div>
+          <div class="card-desc">純正フレームの弱点を補う強化キャップ。ハードな走行でもフレームへの過剰負荷を分散・吸収する。</div>
+          <a href="products/frame-cap.html" class="card-link">詳細を見る</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="card-img"><img src="images/img_tfla60.jpg" alt="TFLA60"></div>
+        <div class="card-body">
+          <div class="card-tag">Transfer</div>
+          <div class="card-name">TFLA60</div>
+          <div class="card-desc">トランスファーを60スプライン化。プロペラシャフト破損を根本から解決する究極のアダプター。</div>
+          <a href="products/tfla60.html" class="card-link">詳細を見る</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-img">
+        <img src="images/img_downgear.jpg" alt="B-STYLE">
+        <div class="about-frame"></div>
+      </div>
+      <div class="about-text">
+        <div class="section-label">About B-STYLE</div>
+        <h2 class="section-title">妥協しない、<br><span class="accent">本物のパーツを。</span></h2>
+        <div class="divider"></div>
+        <p class="section-lead">B-STYLEは東京・東久留米を拠点に、スズキ ジムニーJB64W/JB74Wのオフロードポテンシャルを限界まで引き出すカスタムパーツを製造・販売するブランドです。</p>
+        <p class="section-lead" style="margin-top:14px;">トライアル競技「B-CUP」の主催、全国のパートナーショップとの連携を通じて、ジムニーオーナーが本当に求める走りを実現するためのパーツだけを届けています。</p>
+        <div class="about-facts">
+          <div class="fact"><div class="fact-num">8+</div><div class="fact-label">専用パーツラインナップ</div></div>
+          <div class="fact"><div class="fact-num">JB64/74</div><div class="fact-label">専用設計・専用品質</div></div>
+          <div class="fact"><div class="fact-num">全国</div><div class="fact-label">送料無料</div></div>
+          <div class="fact"><div class="fact-num">世界初</div><div class="fact-label">2Lowシステム開発</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BCUP -->
+<section id="bcup">
+  <div class="container">
+    <div class="section-label">Event</div>
+    <h2 class="section-title">B-CUP <span class="accent">2026</span></h2>
+    <p class="section-lead">B-STYLEが主催するジムニー専用トライアル競技イベント。初心者からベテランまで楽しめる2クラス開催。</p>
+    <div class="divider"></div>
+    <div class="bcup-grid">
+      <div class="bcup-card">
+        <div class="bcup-type">Open Class</div>
+        <div class="bcup-name">B-CUP open</div>
+        <div class="bcup-info">
+          <div class="bcup-row"><span class="bcup-key">日程</span><span class="bcup-val">2026年5月10日（日）</span></div>
+          <div class="bcup-row"><span class="bcup-key">会場</span><span class="bcup-val">埼玉県 EJTCハタオヤマ</span></div>
+          <div class="bcup-row"><span class="bcup-key">参加費</span><span class="bcup-val">事前 ¥6,000 / 当日 ¥6,500</span></div>
+          <div class="bcup-row"><span class="bcup-key">定員</span><span class="bcup-val">30台（先着順）</span></div>
+          <div class="bcup-row"><span class="bcup-key">対象</span><span class="bcup-val">JB23・33・43・64・74</span></div>
+        </div>
+        <p class="bcup-tag">初心者歓迎。恐怖感の少ないコース設計で、フルノーマルからカスタム車両まで参加可能。お弁当付き。</p>
+      </div>
+      <div class="bcup-card expert">
+        <div class="bcup-type">Expert Class</div>
+        <div class="bcup-name">B-CUP expert</div>
+        <div class="bcup-info">
+          <div class="bcup-row"><span class="bcup-key">日程</span><span class="bcup-val">2026年9月13日（日）</span></div>
+          <div class="bcup-row"><span class="bcup-key">会場</span><span class="bcup-val">埼玉県 EJTC波多老山</span></div>
+          <div class="bcup-row"><span class="bcup-key">参加費</span><span class="bcup-val">事前 ¥6,000 / 当日 ¥6,500</span></div>
+          <div class="bcup-row"><span class="bcup-key">締切</span><span class="bcup-val">2026年7月1日</span></div>
+          <div class="bcup-row"><span class="bcup-key">対象</span><span class="bcup-val">JB23・33・43・64・74</span></div>
+        </div>
+        <p class="bcup-tag">中級者向け。公式レーシング規則に準ずるが、参加しやすい設計。カスタム車両推奨。お弁当付き。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<section id="partners">
+  <div class="container">
+    <div class="section-label">Partners</div>
+    <h2 class="section-title">取扱・作業<span class="accent">代理店</span></h2>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <div class="partner-name">Garage モンチ</div>
+        <div class="partner-area">三重県</div>
+        <div class="partner-note">garage-monchi.com</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-name">オートショップ メカブーン</div>
+        <div class="partner-area">大分県 別府市</div>
+        <div class="partner-note">トライアル経験者対応</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-name">オオタケオート</div>
+        <div class="partner-area">群馬県 北群馬郡</div>
+        <div class="partner-note">クロカンジムニーカスタム対応</div>
+      </div>
+      <div class="partner-card">
+        <div class="partner-name">Piston Wirise</div>
+        <div class="partner-area">千葉県 野田市</div>
+        <div class="partner-note">wirise.com</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">お気軽に<span class="accent">ご相談ください</span></h2>
+    <p class="section-lead">製品のご質問・取付方法・適合確認など、お気軽にお問い合わせください。</p>
+    <div class="divider"></div>
+    <div class="contact-inner">
+      <div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-detail">
+              <strong>TEL</strong>
+              <span>090-9857-7088</span>
+              <small>お気軽にお電話ください</small>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-detail">
+              <strong>MAIL</strong>
+              <span>bstyle103style@gmail.com</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📠</div>
+            <div class="contact-detail">
+              <strong>FAX</strong>
+              <span>050-1041-8190</span>
+              <small>※注文のFAX受付は行っておりません</small>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <strong>所在地</strong>
+              <span style="font-size:13px;">〒203-0042<br>東京都東久留米市八幡町3-13-19</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-title">お問い合わせフォーム</div>
+        <form action="https://bstyle103.jimdofree.com/お問い合わせ/" method="get" target="_blank">
+          <div class="form-group">
+            <label>お名前</label>
+            <input type="text" placeholder="山田 太郎">
+          </div>
+          <div class="form-group">
+            <label>メールアドレス</label>
+            <input type="email" placeholder="example@email.com">
+          </div>
+          <div class="form-group">
+            <label>お問い合わせ内容</label>
+            <select>
+              <option>製品について</option>
+              <option>適合・取付について</option>
+              <option>在庫・納期について</option>
+              <option>B-CUPについて</option>
+              <option>その他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>メッセージ</label>
+            <textarea placeholder="ご質問・ご要望をご記入ください"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">送信する →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo.png" alt="B-STYLE">
+      <p>スズキ ジムニー JB64W / JB74W<br>専用カスタムパーツ製造・販売<br>東京都東久留米市八幡町3-13-19</p>
+    </div>
+    <div class="footer-links">
+      <h4>製品</h4>
+      <ul>
+        <li><a href="https://bstyle103.jimdofree.com/em-ロッカー/" target="_blank">EMロッカー</a></li>
+        <li><a href="https://bstyle103.jimdofree.com/エアーロッカー/" target="_blank">エアーロッカー</a></li>
+        <li><a href="https://bstyle103.jimdofree.com/ダウンギア各種/" target="_blank">ダウンギア / 2Lowシステム</a></li>
+        <li><a href="https://bstyle103.jimdofree.com/フロント-リア強化シャフト/" target="_blank">強化シャフト</a></li>
+        <li><a href="https://bstyle103.jimdofree.com/セーフティー/" target="_blank">バトルガード / フレームキャップ</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>サイト</h4>
+      <ul>
+        <li><a href="#about">ブランドについて</a></li>
+        <li><a href="#bcup">B-CUP イベント</a></li>
+        <li><a href="#partners">取扱代理店</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 B-STYLE. All rights reserved.</span>
+    <span>東京都警察古物営業許可 #308901706224</span>
+  </div>
+</footer>
+
+<script>
+// hamburger menu
+const ham = document.getElementById('hamburger');
+const nav = document.getElementById('navLinks');
+ham.addEventListener('click', () => {
+  nav.classList.toggle('open');
+  const spans = ham.querySelectorAll('span');
+  spans[0].style.transform = nav.classList.contains('open') ? 'rotate(45deg) translate(5px,5px)' : '';
+  spans[1].style.opacity = nav.classList.contains('open') ? '0' : '1';
+  spans[2].style.transform = nav.classList.contains('open') ? 'rotate(-45deg) translate(5px,-5px)' : '';
+});
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open');
+}));
+</script>
+
+</body>
+</html>
