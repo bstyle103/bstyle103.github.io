@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>404 ページが見つかりません | B-STYLE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<style>
+.error-wrap{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:var(--dark);}
+.error-num{font-family:'Oswald',sans-serif;font-size:clamp(100px,20vw,180px);font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:2px rgba(34,34,204,0.5);letter-spacing:8px;margin-bottom:0;}
+.error-bar{width:80px;height:4px;background:var(--orange);margin:16px auto 24px;}
+.error-title{font-family:'Oswald',sans-serif;font-size:24px;font-weight:700;color:#fff;letter-spacing:3px;margin-bottom:16px;}
+.error-text{color:rgba(255,255,255,0.55);font-size:13px;line-height:2;margin-bottom:40px;}
+.error-links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:48px;}
+.error-links a{font-size:11px;font-weight:900;letter-spacing:2px;color:rgba(255,255,255,0.6);text-decoration:none;padding:8px 16px;border:1px solid rgba(255,255,255,0.15);border-radius:2px;transition:.2s;}
+.error-links a:hover{color:var(--orange);border-color:var(--orange);}
+.error-home{display:inline-block;font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;letter-spacing:3px;color:#fff;background:var(--blue);padding:14px 40px;text-decoration:none;transition:.2s;}
+.error-home:hover{background:var(--orange);}
+</style>
+</head><body>
+<nav>
+  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="B-STYLE"><span>B-STYLE</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#products">製品一覧</a></li>
+    <li><a href="index.html#about">ブランド</a></li>
+    <li><a href="index.html#bcup">B-CUP</a></li>
+    <li><a href="index.html#contact">お問い合わせ</a></li>
+    <li><a href="tires.html">タイヤ資料</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="error-wrap">
+  <div class="error-num">404</div>
+  <div class="error-bar"></div>
+  <div class="error-title">PAGE NOT FOUND</div>
+  <p class="error-text">
+    お探しのページは見つかりませんでした。<br>
+    URLが変わったか、ページが存在しない可能性があります。
+  </p>
+
+  <div class="error-links">
+    <a href="products/em-locker.html">EMロッカー</a>
+    <a href="products/air-locker.html">エアーロッカー</a>
+    <a href="products/downgear.html">ダウンギア</a>
+    <a href="products/2low.html">2Lowシステム</a>
+    <a href="products/shaft.html">強化シャフト</a>
+    <a href="products/battleguard.html">バトルガード</a>
+    <a href="blog.html">ブログ</a>
+    <a href="tires.html">タイヤ資料</a>
+  </div>
+
+  <a href="index.html" class="error-home">← トップページへ戻る</a>
+</div>
+
+<script>
+const ham=document.getElementById('hamburger'),nav=document.getElementById('navLinks');
+ham.addEventListener('click',()=>{nav.classList.toggle('open');});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+</script>
+</body></html>
