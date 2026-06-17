@@ -203,13 +203,36 @@ nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classLis
 (function(){
   const entry=document.getElementById('entryCta');
   const openTime=new Date('2026-07-01T20:00:00+09:00');
-  if(new Date()<openTime){
-    entry.classList.add('pending');
-    entry.removeAttribute('href');
-    entry.removeAttribute('target');
-    entry.innerHTML='エントリー受付開始は7月1日20:00〜<small>受付開始までしばらくお待ちください</small>';
-    entry.addEventListener('click',e=>e.preventDefault());
+  const closeTime=new Date('2026-09-13T00:00:00+09:00');
+  const originalHref=entry.getAttribute('href');
+  const originalHTML=entry.innerHTML;
+
+  function render(){
+    const now=new Date();
+    if(now<openTime){
+      const diff=openTime-now;
+      const d=Math.floor(diff/86400000);
+      const h=Math.floor(diff%86400000/3600000);
+      const m=Math.floor(diff%3600000/60000);
+      const s=Math.floor(diff%60000/1000);
+      entry.classList.add('pending');
+      entry.removeAttribute('href');
+      entry.removeAttribute('target');
+      entry.innerHTML=`受付開始まで あと${d}日${h}時間${m}分${s}秒<small>7月1日20:00 受付開始</small>`;
+    }else if(now>=closeTime){
+      entry.classList.add('pending');
+      entry.removeAttribute('href');
+      entry.removeAttribute('target');
+      entry.innerHTML='受付終了しました<small>たくさんのエントリーありがとうございました</small>';
+    }else{
+      entry.classList.remove('pending');
+      entry.setAttribute('href',originalHref);
+      entry.setAttribute('target','_blank');
+      entry.innerHTML=originalHTML;
+    }
   }
+  render();
+  setInterval(render,1000);
 })();
 </script>
 </body></html>
