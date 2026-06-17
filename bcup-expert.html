@@ -40,6 +40,10 @@
 .doc-size{font-size:10px;color:var(--gray);margin-top:2px;}
 .doc-dl{font-size:11px;font-weight:900;letter-spacing:1px;color:var(--blue);text-decoration:none;border-bottom:1px solid var(--blue);padding-bottom:2px;white-space:nowrap;}
 .doc-dl:hover{color:var(--orange);border-color:var(--orange);}
+.event-video-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:24px 0;}
+.event-video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:#000;}
+.event-video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+@media(max-width:600px){.event-video-grid{grid-template-columns:1fr;}}
 .cta-box{text-align:center;margin:48px 0;}
 .entry-cta{display:block;text-align:center;background:var(--orange);color:#fff;font-size:22px;font-weight:900;letter-spacing:4px;padding:28px;text-decoration:none;text-transform:uppercase;margin:32px 0;border:3px solid var(--orange);transition:.2s;}
 .entry-cta:hover{background:transparent;color:var(--orange);}
@@ -127,6 +131,16 @@
           <div class="doc-size">355.3 KB</div>
         </div>
         <a href="pdfs/bcup-regulation-schedule.pdf" target="_blank" class="doc-dl">ダウンロード</a>
+      </div>
+    </div>
+
+    <div class="event-section-title">動画で見る</div>
+    <div class="event-video-grid">
+      <div class="event-video-wrap">
+        <iframe src="https://www.youtube.com/embed/pRggLwioijA" allowfullscreen loading="lazy" title="B-CUP Expert 動画1"></iframe>
+      </div>
+      <div class="event-video-wrap">
+        <iframe src="https://www.youtube.com/embed/kBPxQxpYnYU" allowfullscreen loading="lazy" title="B-CUP Expert 動画2"></iframe>
       </div>
     </div>
 
