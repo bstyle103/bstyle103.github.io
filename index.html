@@ -103,6 +103,11 @@ section{padding:90px 20px;}
 .fact-num{font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;color:var(--orange);line-height:1;}
 .fact-label{font-size:11px;color:var(--gray);margin-top:3px;}
 
+/* ===== BLOG SPLIT ===== */
+.split-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;text-align:center;}
+.split-col{padding:20px 40px;}
+.split-col-right{border-left:1px solid rgba(255,255,255,0.1);}
+
 /* ===== BCUP ===== */
 #bcup{background:var(--dark2);}
 .bcup-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
@@ -164,7 +169,8 @@ footer{background:#060610;border-top:2px solid var(--blue);padding:40px 20px 24p
   .nav-links li{border-bottom:1px solid rgba(255,255,255,0.06);}
   .nav-links a{display:block;padding:16px 32px;font-size:15px;}
   .hamburger{display:flex;}
-  .about-inner,.bcup-grid,.contact-inner{grid-template-columns:1fr;}
+  .about-inner,.bcup-grid,.contact-inner,.split-grid{grid-template-columns:1fr;}
+  .split-col-right{border-left:none;border-top:1px solid rgba(255,255,255,0.1);margin-top:20px;}
   .about-img{display:none;}
   .about-facts{grid-template-columns:1fr 1fr;}
 }
@@ -183,6 +189,7 @@ footer{background:#060610;border-top:2px solid var(--blue);padding:40px 20px 24p
     <li><a href="#bcup">B-CUP</a></li>
     <li><a href="#partners">取扱店</a></li>
     <li><a href="#contact">お問い合わせ</a></li>
+    <li><a href="customers.html">愛車紹介</a></li>
     <li><a href="tires.html">タイヤ資料</a></li>
   </ul>
   <div class="hamburger" id="hamburger">
@@ -414,13 +421,25 @@ footer{background:#060610;border-top:2px solid var(--blue);padding:40px 20px 24p
 </section>
 
 <!-- BLOG -->
-<section id="blog" style="background:var(--dark2);text-align:center;">
+<section id="blog" style="background:var(--dark2);">
   <div class="container">
-    <div class="section-label">Blog</div>
-    <h2 class="section-title">B-STYLE <span class="accent">ブログ</span></h2>
-    <p class="section-lead">製品開発の裏側・競技レポート・ジムニー情報をお届けします。</p>
-    <div style="margin-top:32px;">
-      <a href="blog.html" class="btn btn-primary">ブログを読む →</a>
+    <div class="split-grid">
+      <div class="split-col">
+        <div class="section-label">Blog</div>
+        <h2 class="section-title">B-STYLE <span class="accent">ブログ</span></h2>
+        <p class="section-lead">製品開発の裏側・競技レポート・ジムニー情報をお届けします。</p>
+        <div style="margin-top:32px;">
+          <a href="blog.html" class="btn btn-primary">ブログを読む →</a>
+        </div>
+      </div>
+      <div class="split-col split-col-right">
+        <div class="section-label">Owners' Rides</div>
+        <h2 class="section-title">愛車<span class="accent">紹介</span></h2>
+        <p class="section-lead">B-STYLE製品を装着したお客様の愛車をご紹介します。</p>
+        <div style="margin-top:32px;">
+          <a href="customers.html" class="btn btn-primary">愛車紹介を見る →</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -505,7 +524,8 @@ footer{background:#060610;border-top:2px solid var(--blue);padding:40px 20px 24p
         <li><a href="#partners">取扱代理店</a></li>
         <li><a href="#contact">お問い合わせ</a></li>
         <li><a href="links.html">リンク</a></li>
-        <li><a href="tires.html">タイヤ資料</a></li>
+        <li><a href="customers.html">愛車紹介</a></li>
+    <li><a href="tires.html">タイヤ資料</a></li>
       </ul>
     </div>
   </div>
