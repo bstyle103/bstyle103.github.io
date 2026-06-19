@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>愛車紹介 応募フォーム | B-STYLE</title>
+<meta name="description" content="B-STYLE愛車紹介ページへの掲載申し込みフォーム。写真とパーツ情報を送るだけで簡単応募。">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/main.css">
+<style>
+.page-hero{padding:120px 20px 60px;background:var(--dark2);border-bottom:3px solid var(--blue);}
+.breadcrumb{font-size:11px;color:var(--gray);margin-bottom:20px;letter-spacing:1px;}
+.breadcrumb a{color:var(--gray);text-decoration:none;}.breadcrumb a:hover{color:var(--orange);}
+
+.form-wrap{max-width:640px;margin:0 auto;padding:70px 20px 100px;}
+.submit-form{background:var(--dark3);padding:36px;border:1px solid rgba(255,255,255,0.07);}
+.form-group{margin-bottom:20px;}
+.form-group label{display:block;font-size:12px;color:var(--orange);letter-spacing:1px;margin-bottom:8px;font-weight:900;}
+.form-group .hint{display:block;font-size:11px;color:var(--gray);font-weight:400;margin-top:4px;letter-spacing:0;}
+.form-group input,.form-group textarea{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:#fff;padding:12px 14px;font-size:13px;font-family:inherit;outline:none;transition:.2s;}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--blue);}
+.form-group textarea{height:130px;resize:vertical;}
+.form-group input[type=file]{padding:10px 14px;}
+.btn-submit{width:100%;background:var(--orange);color:#fff;border:none;padding:16px;font-size:14px;font-weight:900;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:.2s;margin-top:8px;}
+.btn-submit:hover{background:#c06010;}
+.form-note{font-size:11px;color:var(--gray);line-height:1.8;margin-top:20px;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;}
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR9LX62HJ4"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZR9LX62HJ4');</script></head><body>
+<nav>
+  <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="B-STYLE"><span>B-STYLE</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#products">製品一覧</a></li>
+    <li><a href="index.html#bcup">B-CUP</a></li>
+    <li><a href="customers.html">愛車紹介</a></li>
+    <li><a href="index.html#contact">お問い合わせ</a></li>
+    <li><a href="tires.html">タイヤ資料</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">HOME</a> &gt; <a href="customers.html">愛車紹介</a> &gt; 応募フォーム</div>
+    <div class="section-label">Entry Form / B-STYLE</div>
+    <h1 class="section-title">愛車紹介 <span class="accent">応募フォーム</span></h1>
+    <p style="color:rgba(255,255,255,0.7);font-size:14px;line-height:1.9;margin-top:12px;">必要事項を入力して送信するだけ。確認後、「愛車紹介」ページに掲載させていただきます。</p>
+  </div>
+</div>
+
+<div class="form-wrap">
+  <form class="submit-form" action="https://formspree.io/f/xpqevaep" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="_subject" value="【愛車紹介】新しい応募が届きました">
+    <input type="text" name="_gotcha" style="display:none">
+
+    <div class="form-group">
+      <label>ニックネーム（必須）<span class="hint">本名でなくてOKです</span></label>
+      <input type="text" name="ニックネーム" required>
+    </div>
+
+    <div class="form-group">
+      <label>愛車の写真（必須・1〜4枚）<span class="hint">ナンバープレートが写っている場合はこちらでモザイク処理します</span></label>
+      <input type="file" name="写真1" accept="image/*" required>
+      <input type="file" name="写真2" accept="image/*" style="margin-top:8px;">
+      <input type="file" name="写真3" accept="image/*" style="margin-top:8px;">
+      <input type="file" name="写真4" accept="image/*" style="margin-top:8px;">
+    </div>
+
+    <div class="form-group">
+      <label>使用パーツ（B-STYLE製）<span class="hint">わかる範囲でOKです</span></label>
+      <textarea name="使用パーツ_B-STYLE製" placeholder="例）EMロッカー、エクストラダウンギア、バトルガード"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>使用パーツ（他社製）<span class="hint">B-STYLE製品以外も歓迎です</span></label>
+      <textarea name="使用パーツ_他社製" placeholder="例）リフトアップキット、ロールケージ"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>一言コメント（必須）<span class="hint">愛車への想い、おすすめポイントなど自由に</span></label>
+      <textarea name="コメント" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>連絡先（任意）<span class="hint">確認のご連絡が必要な場合のみ使用します</span></label>
+      <input type="text" name="連絡先" placeholder="メールアドレスやInstagramIDなど">
+    </div>
+
+    <button type="submit" class="btn-submit">送信する</button>
+
+    <p class="form-note">※送信内容は確認のうえ掲載させていただきます。掲載まで多少お時間をいただく場合があります。<br>※写真の著作権・使用許諾はご本人にあるものとして掲載いたします。</p>
+  </form>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><img src="images/logo.png" alt="B-STYLE"><p>スズキ ジムニー JB64W / JB74W<br>専用カスタムパーツ製造・販売<br>東京都東久留米市八幡町3-13-19</p></div>
+    <div class="footer-links"><h4>製品</h4><ul>
+      <li><a href="products/em-locker.html">EMロッカー</a></li>
+      <li><a href="products/air-locker.html">エアーロッカー</a></li>
+      <li><a href="products/downgear.html">ダウンギア</a></li>
+      <li><a href="products/2low.html">2Lowシステム</a></li>
+      <li><a href="products/shaft.html">強化シャフト</a></li>
+      <li><a href="products/battleguard.html">バトルガード</a></li>
+      <li><a href="products/frame-cap.html">強化フレームキャップ</a></li>
+      <li><a href="products/tfla60.html">TFLA60</a></li>
+      <li><a href="products/hard-sil-guard.html">ハードシルガード</a></li>
+    </ul></div>
+    <div class="footer-links"><h4>サイト</h4><ul>
+      <li><a href="index.html#bcup">B-CUP</a></li>
+      <li><a href="blog.html">ブログ</a></li>
+      <li><a href="customers.html">愛車紹介</a></li>
+      <li><a href="index.html#contact">お問い合わせ</a></li>
+      <li><a href="links.html">リンク</a></li>
+      <li><a href="tires.html">タイヤ資料</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom"><span>© 2026 B-STYLE.</span><span>TEL 090-9857-7088</span></div>
+</footer>
+<script>
+const ham=document.getElementById('hamburger'),nav=document.getElementById('navLinks');
+ham.addEventListener('click',()=>{nav.classList.toggle('open');});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+</script>
+</body></html>
