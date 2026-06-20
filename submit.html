@@ -12,16 +12,8 @@
 .breadcrumb a{color:var(--gray);text-decoration:none;}.breadcrumb a:hover{color:var(--orange);}
 
 .form-wrap{max-width:640px;margin:0 auto;padding:70px 20px 100px;}
-.submit-form{background:var(--dark3);padding:36px;border:1px solid rgba(255,255,255,0.07);}
-.form-group{margin-bottom:20px;}
-.form-group label{display:block;font-size:12px;color:var(--orange);letter-spacing:1px;margin-bottom:8px;font-weight:900;}
-.form-group .hint{display:block;font-size:11px;color:var(--gray);font-weight:400;margin-top:4px;letter-spacing:0;}
-.form-group input,.form-group textarea{width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);color:#fff;padding:12px 14px;font-size:13px;font-family:inherit;outline:none;transition:.2s;}
-.form-group input:focus,.form-group textarea:focus{border-color:var(--blue);}
-.form-group textarea{height:130px;resize:vertical;}
-.form-group input[type=file]{padding:10px 14px;}
-.btn-submit{width:100%;background:var(--orange);color:#fff;border:none;padding:16px;font-size:14px;font-weight:900;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:.2s;margin-top:8px;}
-.btn-submit:hover{background:#c06010;}
+.tally-wrap{background:var(--dark3);padding:8px;border:1px solid rgba(255,255,255,0.07);}
+.tally-wrap iframe{width:100%;border:none;}
 .form-note{font-size:11px;color:var(--gray);line-height:1.8;margin-top:20px;border-top:1px solid rgba(255,255,255,0.08);padding-top:16px;}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR9LX62HJ4"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZR9LX62HJ4');</script></head><body>
@@ -47,48 +39,14 @@
 </div>
 
 <div class="form-wrap">
-  <form class="submit-form" action="https://formspree.io/f/xpqevaep" method="POST" enctype="multipart/form-data">
-    <input type="hidden" name="_subject" value="【愛車紹介】新しい応募が届きました">
-    <input type="text" name="_gotcha" style="display:none">
-
-    <div class="form-group">
-      <label>ニックネーム（必須）<span class="hint">本名でなくてOKです</span></label>
-      <input type="text" name="ニックネーム" required>
-    </div>
-
-    <div class="form-group">
-      <label>愛車の写真（必須・1〜4枚）<span class="hint">ナンバープレートが写っている場合はこちらでモザイク処理します</span></label>
-      <input type="file" name="写真1" accept="image/*" required>
-      <input type="file" name="写真2" accept="image/*" style="margin-top:8px;">
-      <input type="file" name="写真3" accept="image/*" style="margin-top:8px;">
-      <input type="file" name="写真4" accept="image/*" style="margin-top:8px;">
-    </div>
-
-    <div class="form-group">
-      <label>使用パーツ（B-STYLE製）<span class="hint">わかる範囲でOKです</span></label>
-      <textarea name="使用パーツ_B-STYLE製" placeholder="例）EMロッカー、エクストラダウンギア、バトルガード"></textarea>
-    </div>
-
-    <div class="form-group">
-      <label>使用パーツ（他社製）<span class="hint">B-STYLE製品以外も歓迎です</span></label>
-      <textarea name="使用パーツ_他社製" placeholder="例）リフトアップキット、ロールケージ"></textarea>
-    </div>
-
-    <div class="form-group">
-      <label>一言コメント（必須）<span class="hint">愛車への想い、おすすめポイントなど自由に</span></label>
-      <textarea name="コメント" required></textarea>
-    </div>
-
-    <div class="form-group">
-      <label>連絡先（任意）<span class="hint">確認のご連絡が必要な場合のみ使用します</span></label>
-      <input type="text" name="連絡先" placeholder="メールアドレスやInstagramIDなど">
-    </div>
-
-    <button type="submit" class="btn-submit">送信する</button>
-
-    <p class="form-note">※送信内容は確認のうえ掲載させていただきます。掲載まで多少お時間をいただく場合があります。<br>※写真の著作権・使用許諾はご本人にあるものとして掲載いたします。</p>
-  </form>
+  <div class="tally-wrap">
+    <iframe data-tally-src="https://tally.so/embed/VLqZrE?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="800" title="愛車紹介 応募フォーム"></iframe>
+  </div>
+  <p class="form-note">※送信内容は確認のうえ掲載させていただきます。掲載まで多少お時間をいただく場合があります。<br>※写真の著作権・使用許諾はご本人にあるものとして掲載いたします。</p>
 </div>
+<script>
+var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s)}
+</script>
 
 <footer>
   <div class="footer-inner">
