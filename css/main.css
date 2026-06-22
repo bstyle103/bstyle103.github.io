@@ -23,6 +23,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(10,10,26,0.
 .nav-links a:hover{color:var(--orange);}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;margin-left:auto;}
 .hamburger span{display:block;width:26px;height:2px;background:#fff;transition:.3s;}
+.nav-music-btn{background:none;border:1px solid rgba(255,255,255,0.35);color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:14px;margin-left:18px;flex-shrink:0;transition:.2s;display:flex;align-items:center;justify-content:center;}
+.nav-music-btn:hover{border-color:var(--orange);color:var(--orange);}
+.nav-music-btn.playing{background:var(--orange);border-color:var(--orange);}
 
 /* COMMON */
 .container{max-width:1160px;margin:0 auto;padding:0 20px;}

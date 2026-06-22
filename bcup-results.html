@@ -84,6 +84,7 @@ table.result tbody tr.rank3 td.total{color:#CD7F32;}
     <li><a href="customers.html">愛車紹介</a></li>
     <li><a href="tires.html">タイヤ資料</a></li>
   </ul>
+  <button id="musicBtn" class="nav-music-btn" title="B-STYLEテーマソング再生">🎵</button><audio id="themeAudio" preload="none" src="audio/carry-on.wav"></audio>
   <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
 </nav>
 
@@ -262,10 +263,6 @@ table.result tbody tr.rank3 td.total{color:#CD7F32;}
     </ul></div>
   </div>
   <div class="footer-bottom"><span>© 2026 B-STYLE.</span><span>TEL 090-9857-7088</span></div>
-  <div class="theme-player">
-    <span class="theme-player-label">🎵 B-STYLEテーマソング</span>
-    <audio controls preload="none"><source src="audio/carry-on.wav" type="audio/wav"></audio>
-  </div>
 </footer>
 
 <script>
@@ -278,5 +275,12 @@ function switchTab(id,btn){
 const ham=document.getElementById('hamburger'),nav=document.getElementById('navLinks');
 ham.addEventListener('click',()=>nav.classList.toggle('open'));
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+</script>
+<script>
+const musicBtn=document.getElementById('musicBtn'),themeAudio=document.getElementById('themeAudio');
+musicBtn.addEventListener('click',()=>{
+  if(themeAudio.paused){themeAudio.play();musicBtn.classList.add('playing');}
+  else{themeAudio.pause();musicBtn.classList.remove('playing');}
+});
 </script>
 </body></html>

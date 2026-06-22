@@ -215,6 +215,7 @@ footer{background:#060610;border-top:2px solid var(--blue);padding:40px 20px 24p
     <li><a href="customers.html">愛車紹介</a></li>
     <li><a href="tires.html">タイヤ資料</a></li>
   </ul>
+  <button id="musicBtn" class="nav-music-btn" title="B-STYLEテーマソング再生">🎵</button><audio id="themeAudio" preload="none" src="audio/carry-on.wav"></audio>
   <div class="hamburger" id="hamburger">
     <span></span><span></span><span></span>
   </div>
@@ -556,10 +557,6 @@ footer{background:#060610;border-top:2px solid var(--blue);padding:40px 20px 24p
     <span>© 2026 B-STYLE. All rights reserved.</span>
     <span>東京都警察古物営業許可 #308901706224</span>
   </div>
-  <div class="theme-player">
-    <span class="theme-player-label">🎵 B-STYLEテーマソング</span>
-    <audio controls preload="none"><source src="audio/carry-on.wav" type="audio/wav"></audio>
-  </div>
 </footer>
 
 <script>
@@ -576,6 +573,13 @@ ham.addEventListener('click', () => {
 nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   nav.classList.remove('open');
 }));
+</script>
+<script>
+const musicBtn=document.getElementById('musicBtn'),themeAudio=document.getElementById('themeAudio');
+musicBtn.addEventListener('click',()=>{
+  if(themeAudio.paused){themeAudio.play();musicBtn.classList.add('playing');}
+  else{themeAudio.pause();musicBtn.classList.remove('playing');}
+});
 </script>
 
 </body>
