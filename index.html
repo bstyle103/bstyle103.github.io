@@ -494,7 +494,7 @@ footer{background:#060610;border-top:2px solid var(--blue);padding:40px 20px 24p
             <div class="contact-icon">📞</div>
             <div class="contact-detail">
               <strong>TEL</strong>
-              <span>090-9857-7088</span>
+              <span><a href="tel:09098577088" style="color:inherit;text-decoration:none;">090-9857-7088</a></span>
               <small>お気軽にお電話ください</small>
             </div>
           </div>
@@ -591,6 +591,22 @@ musicBtn.addEventListener('click',()=>{
 });
 </script>
 
+<!-- bstyle-ga-events -->
+<script>
+(function(){
+  document.addEventListener('click',function(e){
+    var el=e.target; if(el&&el.nodeType===3)el=el.parentElement;
+    var a=el&&el.closest?el.closest('a'):null; if(!a||!a.getAttribute('href'))return;
+    var raw=a.getAttribute('href')||''; var url=a.href;
+    try{url=decodeURIComponent(a.href);}catch(_){ }
+    if(raw.indexOf('tel:')===0){ if(typeof gtag==='function')gtag('event','phone_tap'); return; }
+    if(url.indexOf('jimdofree.com')>-1){
+      if(url.indexOf('\u304a\u554f\u3044\u5408\u308f\u305b')>-1){ if(typeof gtag==='function')gtag('event','contact_click'); }
+      else { if(typeof gtag==='function')gtag('event','cart_click'); }
+    }
+  },true);
+})();
+</script>
 </body>
 </html>
 

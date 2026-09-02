@@ -147,4 +147,20 @@ musicBtn.addEventListener('click',()=>{
   else{themeAudio.pause();musicBtn.classList.remove('playing');}
 });
 </script>
+<!-- bstyle-ga-events -->
+<script>
+(function(){
+  document.addEventListener('click',function(e){
+    var el=e.target; if(el&&el.nodeType===3)el=el.parentElement;
+    var a=el&&el.closest?el.closest('a'):null; if(!a||!a.getAttribute('href'))return;
+    var raw=a.getAttribute('href')||''; var url=a.href;
+    try{url=decodeURIComponent(a.href);}catch(_){ }
+    if(raw.indexOf('tel:')===0){ if(typeof gtag==='function')gtag('event','phone_tap'); return; }
+    if(url.indexOf('jimdofree.com')>-1){
+      if(url.indexOf('\u304a\u554f\u3044\u5408\u308f\u305b')>-1){ if(typeof gtag==='function')gtag('event','contact_click'); }
+      else { if(typeof gtag==='function')gtag('event','cart_click'); }
+    }
+  },true);
+})();
+</script>
 </body></html>
