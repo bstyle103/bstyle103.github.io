@@ -197,6 +197,14 @@ footer{background:#060610;border-top:2px solid var(--blue);padding:40px 20px 24p
   .about-img{display:none;}
   .about-facts{grid-template-columns:1fr 1fr;}
 }
+.photo-carousel-section{padding:0;background:var(--dark2);overflow:hidden;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);}
+.carousel-track-wrap{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);}
+.carousel-track{display:flex;width:max-content;animation:scrollCarousel 50s linear infinite;}
+.carousel-track:hover{animation-play-state:paused;}
+.carousel-item{flex-shrink:0;width:260px;height:170px;margin-right:4px;overflow:hidden;}
+.carousel-item img{width:100%;height:100%;object-fit:cover;display:block;}
+@keyframes scrollCarousel{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@media(max-width:600px){.carousel-item{width:180px;height:120px;}}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR9LX62HJ4"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZR9LX62HJ4');</script></head>
 <body>
@@ -339,6 +347,35 @@ footer{background:#060610;border-top:2px solid var(--blue);padding:40px 20px 24p
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO CAROUSEL -->
+<section class="photo-carousel-section">
+  <div class="carousel-track-wrap">
+    <div class="carousel-track" id="photoCarouselTrack">
+      <div class="carousel-item"><img src="images/customers/souma-1.jpeg" alt=""></div>
+      <div class="carousel-item"><img src="images/customers/taiju-1.jpeg" alt=""></div>
+      <div class="carousel-item"><img src="images/customers/maverick-1.jpeg" alt=""></div>
+      <div class="carousel-item"><img src="images/customers/shinya-1.png" alt=""></div>
+      <div class="carousel-item"><img src="images/customers/kaka-1.jpg" alt=""></div>
+      <div class="carousel-item"><img src="images/customers/onichan-1.jpg" alt=""></div>
+      <div class="carousel-item"><img src="images/customers/gekkeiju-jb64-1.jpg" alt=""></div>
+      <div class="carousel-item"><img src="images/customers/asami-1.jpg" alt=""></div>
+      <div class="carousel-item"><img src="images/customers/tcraft-1.jpg" alt=""></div>
+      <div class="carousel-item"><img src="images/echocup5-2.jpg" alt=""></div>
+      <div class="carousel-item"><img src="images/soukoukai23-1.jpg" alt=""></div>
+      <div class="carousel-item"><img src="images/hatoyama1115-02.jpg" alt=""></div>
+      <div class="carousel-item"><img src="images/hatoyama1115-05.jpg" alt=""></div>
+      <div class="carousel-item"><img src="images/soukoukai23-2.jpg" alt=""></div>
+      <div class="carousel-item"><img src="images/hatoyama1115-09.jpg" alt=""></div>
+      <div class="carousel-item"><img src="images/echocup5-1.jpg" alt=""></div>
+      <div class="carousel-item"><img src="images/downgear-asm-01.jpg" alt=""></div>
+      <div class="carousel-item"><img src="images/airlocker-02.jpg" alt=""></div>
+      <div class="carousel-item"><img src="images/downgear-asm-03.jpg" alt=""></div>
+      <div class="carousel-item"><img src="images/work-downgear-20261014.jpg" alt=""></div>
+      <div class="carousel-item"><img src="images/airlocker-04.jpg" alt=""></div>
     </div>
   </div>
 </section>
@@ -589,6 +626,11 @@ musicBtn.addEventListener('click',()=>{
   if(themeAudio.paused){themeAudio.play();musicBtn.classList.add('playing');}
   else{themeAudio.pause();musicBtn.classList.remove('playing');}
 });
+</script>
+
+<script>
+const photoCarouselTrack=document.getElementById('photoCarouselTrack');
+if(photoCarouselTrack){photoCarouselTrack.innerHTML+=photoCarouselTrack.innerHTML;}
 </script>
 
 <!-- bstyle-ga-events -->
